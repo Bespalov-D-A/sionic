@@ -1,17 +1,4 @@
 @import 'fonts.css';
 @import 'variables.css';
+@import 'colors.css';
 
-:root {
-	--color-blue: #2F80ED;
-	--color-light-blue: #727280;
-	--color-accent-blue: #2967FF;
-	--color-green: #58CF18;
-	--color-orange: #FFA601;
-	--color-pink: #FF7CB4;
-	--color-dark-pink: #FF2D87;
-	--color-dark: #2D2D2F;
-	--color-gray: #727280;
-	--color-dark-gray: #8D8D8E;
-	--color-black: #000000;
-	--color-white: #ffffff;
-}
