@@ -1,0 +1,27 @@
+@import './../../../css/index.css';
+
+.location {
+	position: relative;
+	width: 164px;
+	height: 20px;
+	margin-right: 20px;
+	padding-left: 25px;
+	font-size: 14px;
+	line-height: 20px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: var(--color-gray);
+}
+
+.location::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 20px;
+	height: 20px;
+	background-image: url("./../../../img/icons/marker.svg");
+	background-repeat: no-repeat;
+	background-position: center center;
+}

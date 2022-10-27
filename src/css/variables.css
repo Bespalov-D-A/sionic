@@ -1,3 +1,5 @@
 :root {
-
+  --page-size: 1366px;
+	--content-size: 1015px;
+	--right-side: 351px;
 }

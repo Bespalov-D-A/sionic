@@ -1,0 +1,39 @@
+@import './../../../css/index.css';
+
+.find {
+	display: flex;
+	width: 100%;
+	max-width: 468px;
+	padding: 4px;
+	margin-right: 16px;
+	border-radius: 36px;
+	border: 1px solid var(--color-light);
+}
+
+.btn {
+	position: relative;
+	width: 92px;
+	height: 42px;
+	border-radius: 41px;
+	border: none;
+	background-color: var(--color-light);
+}
+
+.btn::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 92px;
+	height: 42px;
+	background-image: url(./../../../img/icons/find.svg); 
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.field {
+	flex: 1 1 0;
+	width: 100%;
+	border: none;
+	outline: none;
+}

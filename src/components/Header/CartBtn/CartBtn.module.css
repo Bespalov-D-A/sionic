@@ -1,0 +1,42 @@
+@import "./../../../css/index.css";
+
+.cart-btn {
+	position: relative;
+	width: 50px;
+	height: 50px;
+	margin-right: 20px;
+	border-radius: 50%;
+	border: solid 1px var(--color-gray);
+}
+
+.cart-btn::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50px;
+	height: 50px;
+	background-image: url("./../../../img/icons/basket.svg");
+	background-repeat: no-repeat;
+	background-position: 13px center;
+}
+
+.count {
+	position: absolute;
+	right: -12px;
+	top: -10px;
+	width: 31px;
+	height: 31px;
+	font-weight: 600;
+	font-size: 14px;
+	border-radius: 50%;
+	text-align: center;
+	background-color: var(--color-white);
+	color: var(--color-accent-blue);
+}
+
+.count-item {
+	position: absolute;
+	bottom: 4px;
+	left: 5px;
+}

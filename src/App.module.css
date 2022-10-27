@@ -1,0 +1,22 @@
+@import "./css/index.css" ;
+
+
+.wrapper {
+	display: flex;
+	width: 100%;
+	max-width: var(--page-size);
+	margin: 0 auto;
+	border: dashed 2px gold;
+}
+
+.content {
+	display: flex;
+	flex-flow: column wrap;
+	width: 100%;
+	max-width: var(--content-size);
+}
+
+.right-side {
+	display: flex;
+	flex-flow: column wrap;
+}
