@@ -1,0 +1,12 @@
+@import "./../../../../css/index.css";
+
+.btn {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 140%;
+	padding: 10px 0;
+	border-radius: 26px;
+	background-color: transparent;
+	border: solid 1px var(--color-accent-blue);
+	color: var(--color-accent-blue);
+}
