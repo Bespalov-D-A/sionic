@@ -1,0 +1,25 @@
+@import './../../css/index.css';
+
+.footer {
+	min-height: 215px;
+	padding-top: 32px;
+	background-color: var(--color-light-gray);
+}
+
+.wrapper {
+	display: flex;
+	width: 100%;
+	max-width: var(--page-size);
+	margin: 0 auto;
+}
+
+.wrap-content {
+	display: flex;
+	width: 100%;
+	max-width: var(--content-size);
+	padding: 0 31px 0 50px;
+}
+
+.right-side {
+	max-width: var(--right-side);
+}

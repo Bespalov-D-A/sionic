@@ -1,0 +1,27 @@
+@import "./../../../css/index.css";
+
+.info {
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	padding-top: 57px;
+}
+
+.menu {
+	display: flex;
+}
+
+.menu__link {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 122%;
+	color: var(--color-dark-gray);
+}
+
+.menu__item  {
+	margin-right: 20px;
+}
+
+.menu__item:last-child {
+	margin-right: 0;
+}

@@ -1,0 +1,45 @@
+@import './../../../css/index.css';
+
+.social {
+	width: 244px;
+}
+
+.title {
+	margin-bottom: 10px;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 140%;
+	color: var(--color-dark);
+}
+
+.social-menu {
+	display: flex;
+}
+
+.social-menu__item {
+	margin-right: 16px;
+}
+
+.social-menu__item:last-child {
+	margin-right: 0;
+}
+
+.link {
+	display: block;
+	width: 28px;
+	height: 28px;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.link.link-fb {
+	background-image: url("./../../../img/icons/fb.svg");
+}
+
+.link.link-vk {
+	background-image: url("./../../../img/icons/vk.svg");
+}
+
+.link.link-inst {
+	background-image: url("./../../../img/icons/inst.svg");
+}

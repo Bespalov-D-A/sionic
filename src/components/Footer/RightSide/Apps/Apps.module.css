@@ -1,0 +1,37 @@
+@import "./../../../../css/index.css";
+
+.title {
+	margin-bottom: 10px;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 140%;
+	color: var(--color-dark);
+}
+
+.apps-menu {
+	display: flex;
+}
+
+.apps-menu__item {
+	margin-right: 20px;
+}
+
+.apps-menu__item:last-child {
+	margin-right: 0;
+}
+
+.link {
+	display: block;
+	width: 104px;
+	height: 32px;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.link.link--android {
+	background-image: url('./../../../../img/icons/google_play.svg');
+}
+
+.link.link--apple {
+	background-image: url('./../../../../img/icons/app_store.svg');
+}
