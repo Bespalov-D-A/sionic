@@ -1,0 +1,41 @@
+@import "./../../../css/index.css";
+
+.sale {
+	position: relative;
+	padding: 20px 20px 20px 97px;
+	margin-bottom: 33px;
+	border-radius: 20px;
+	border: solid 1px var(--color-dark-pink);
+}
+
+.sale::before {
+	content: "";
+	position: absolute;
+	width: 91px;
+	height: 82px;
+	top: 32px;
+	left: -11px;
+	background-image: url("./../../../img/bags.svg");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.title {
+	margin-bottom: 11px;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 130%;
+	color: var(--color-accent-blue);
+}
+
+.btn {
+	height: 40px;
+	padding: 0 25px;
+	line-height: 40px;
+	font-weight: 600;
+	font-size: 16px;
+	color: #ffffff;
+	border: none;
+	background-color: var(--color-accent-blue);
+	border-radius: 51px;
+}

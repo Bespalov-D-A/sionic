@@ -1,0 +1,11 @@
+@import './../../css/index.css';
+
+.right-side {
+	display: flex;
+	flex-flow: column wrap;
+	width: 100%;
+	padding: 27px 16px 0 24px;
+	max-width: 351px;
+
+	background: antiquewhite; 
+}

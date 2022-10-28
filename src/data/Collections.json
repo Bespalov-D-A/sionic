@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "name": "Новая коллекция",
+    "img": "img/collection-1.jpg"
+  },
+
+  {
+    "id": 2,
+    "name": "Новая коллекция",
+    "img": "img/collection-2.jpg"
+  },
+
+  {
+    "id": 3,
+    "name": "Новая коллекция",
+    "img": "img/collection-1.jpg"
+  }
+]
