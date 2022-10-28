@@ -1,0 +1,24 @@
+.header-shop {
+	display: flex;
+	justify-content: space-between;
+	align-items:  baseline;
+	width: 100%;
+	max-width: 370px;
+	margin-bottom: 20px;
+}
+
+.title {
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 23px;
+	font-feature-settings: "pnum" on, "lnum" on;
+}
+
+.cat-setting {
+font-weight: 600;
+font-size: 12px;
+line-height: 127.7%;
+text-align: center;
+font-feature-settings: 'pnum' on, 'lnum' on;
+
+}

@@ -4,10 +4,13 @@ import s from "./ProductCard.module.css";
 import Tags from "./Tags/Tags";
 import image from './../../../img/product.png'
 import Btn from "./Btn/Btn";
+import {IproductCard} from "../../../types/types";
 
-interface ProductCardProps {}
+interface ProductCardProps {
+  productCard: IproductCard;
+}
 
-const ProdcutCard: FC<ProductCardProps> = ({}) => {
+const ProdcutCard: FC<ProductCardProps> = ({productCard}) => {
   return (
     <div className={s["product-card"]}>
       <div className={s.header}>
@@ -15,7 +18,7 @@ const ProdcutCard: FC<ProductCardProps> = ({}) => {
         <Tags />
       </div>
       <div className={s['title-block']}>
-<p className={s.title}>Длинное название товара в одну строчку п...</p>
+<p className={s.title}>{productCard.name}</p>
       </div>
       <Price /> 
       <Btn />
