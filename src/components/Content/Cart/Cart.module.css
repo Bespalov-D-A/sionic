@@ -1,0 +1,7 @@
+@import './../../../css/index.css';
+
+.cart {
+	margin: 30px 50px;
+	border-radius: 20px;
+	border: solid 1px var(--color-v-light-blue);
+}

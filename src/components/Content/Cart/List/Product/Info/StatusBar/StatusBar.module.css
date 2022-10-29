@@ -1,0 +1,59 @@
+@import "./../../../../../../../css/index.css";
+
+.status-bar {
+	display: inline-block;
+	position: relative;
+	padding-top: 10px;
+}
+
+.stub {
+}
+
+.count {
+	position: relative;
+	padding: 3px 13px;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 122%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-accent-blue);
+	border-radius: 0px 100px 100px 53px;
+	border: solid 1px var(--color-accent-blue);
+	z-index: 2;
+}
+
+.time {
+	position: relative;
+	padding: 4px 13px;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 122%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-dark-pink);
+	z-index: 1;
+}
+
+.time::after {
+	content: "";
+	top: 0;
+	right: 0;
+	position: absolute;
+	bottom: 0;
+	width: 110%;
+	border: solid 1px var(--color-dark-pink);
+	border-left: 0 !important;
+	border-radius: 0 100px 100px 0;
+}
+
+.bought {
+	display: inline;
+	padding-left: 10px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 140%;
+	font-feature-settings: "pnum" on, "lnum" on;
+}
+
+.bought-count {
+	font-weight: 600;
+}

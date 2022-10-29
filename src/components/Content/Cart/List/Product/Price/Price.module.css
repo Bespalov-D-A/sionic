@@ -1,0 +1,22 @@
+@import "./../../../../../../css/index.css";
+
+.price {
+	padding-left: 20px;
+}
+
+.current {
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 140%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-dark);
+}
+
+.discount {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 122%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-dark-gray);
+	text-decoration: line-through;
+}

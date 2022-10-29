@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import s from './Content.module.css'
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Cart from "./Cart/Cart";
 import Delivery from "./Delivery/Delivery";
@@ -13,7 +14,7 @@ const Content: FC<ContentProps> = ({}) => {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path={"/"} element={<Navigate replace to="/shop" />} />
+          <Route path={"/"} element={<Navigate replace to="/cart" />} />
           <Route path={"/shop"} element={<Shop />} />
           <Route path={"/history"} element={<History />} />
           <Route path={"/delivery"} element={<Delivery />} />
