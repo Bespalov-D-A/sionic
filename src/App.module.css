@@ -6,7 +6,6 @@
 	width: 100%;
 	max-width: var(--page-size);
 	margin: 0 auto;
-	border: dashed 2px gold;
 }
 
 .content {

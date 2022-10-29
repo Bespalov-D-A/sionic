@@ -9,6 +9,7 @@ const History: FC<HistoryProps> = ({}) => {
   return <div className={s.history}>
 <h3 className={s.title}>История заказов</h3>
 <Order />
+<Order />
   </div>;
 };
 
