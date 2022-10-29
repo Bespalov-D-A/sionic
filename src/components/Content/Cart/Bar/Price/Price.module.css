@@ -1,0 +1,21 @@
+@import "./../../../../../css/index.css";
+
+.price {
+	margin-right: 83px;
+}
+
+.title {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 140%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-dark);
+}
+
+.num {
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 23px;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-dark);
+}

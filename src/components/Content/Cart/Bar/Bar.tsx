@@ -9,7 +9,7 @@ const Bar: FC<BarProps> = ({}) => {
     <div className={s.bar}>
       <h3 className={s["product-name"]}>Xiaomi</h3>
       <Price />
-      <input className={s.btn + s[' blue-btn']} type="button" value="Оформить" />
+      <input className={s.btn + ' blue-btn'} type="button" value="Оформить" />
     </div>
   );
 };

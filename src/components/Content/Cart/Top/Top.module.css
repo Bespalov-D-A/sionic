@@ -1,0 +1,28 @@
+@import "./../../../../css/index.css";
+
+.top {
+	display: flex;
+	align-items: baseline;
+	padding: 30px 50px 0;
+	margin-bottom: 30px;
+}
+
+.title {
+	margin-right: 30px;
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 23px;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-dark);
+}
+
+.clear {
+font-weight: 600;
+font-size: 16px;
+line-height: 19px;
+font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+.link {
+color: var(--color-dark-pink);
+}
