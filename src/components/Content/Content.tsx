@@ -14,7 +14,7 @@ const Content: FC<ContentProps> = ({}) => {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path={"/"} element={<Navigate replace to="/history" />} />
+          <Route path={"/"} element={<Navigate replace to="/shop" />} />
           <Route path={"/shop"} element={<Shop />} />
           <Route path={"/history"} element={<History />} />
           <Route path={"/delivery"} element={<Delivery />} />
