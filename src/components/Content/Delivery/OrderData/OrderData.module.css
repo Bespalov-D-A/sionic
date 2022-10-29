@@ -1,0 +1,52 @@
+@import "./../../../../css/index.css";
+
+.order-data {
+	width: 292px;
+	margin: 0 auto;
+}
+
+.wrapper {
+	width: 100%;
+	padding: 20px;
+	margin-bottom: 10px;
+	border-radius: 20px;
+	background-color: var(--color-light);
+}
+
+.cost {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 5px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 140%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-light-blue);
+}
+
+.num {
+}
+
+.total {
+	display: flex;
+	justify-content: space-between;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 140%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-light-blue);
+}
+
+.total > .num {
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 140%;
+	text-align: right;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-dark);
+}
+
+.btn {
+	width: 100%;
+	height: 50px;
+}

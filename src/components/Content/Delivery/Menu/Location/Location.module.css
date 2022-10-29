@@ -1,0 +1,14 @@
+@import "./../../../../../css/index.css";
+
+.location {
+	padding-top: 30px;
+}
+
+.title {
+	margin-bottom: 10px;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 140%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-dark);
+}

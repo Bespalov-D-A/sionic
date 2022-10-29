@@ -1,0 +1,45 @@
+@import "./../../../../../../css/index.css";
+
+.address {
+	display: flex;
+	align-items: center;
+	position: relative;
+	min-width: 292px;
+	height: 40px;
+	border: solid 1px var(--color-light);
+	border-radius: 45px;
+}
+
+.address::after {
+	content: "";
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	width: 20px;
+	height: 20px;
+	background-image: url("./../../../../../../img/icons/message.svg");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.input-field {
+	position: relative;
+	left: 40px;
+	width: 100%;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	z-index: 4;
+}
+
+.placeholder {
+	position: absolute;
+	left: 40px;
+	top: 12px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 140%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-gray);
+	z-index: 1;
+}

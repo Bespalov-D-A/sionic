@@ -1,0 +1,31 @@
+@import "./../../../../../css/index.css";
+
+.phone {
+	padding-top: 30px;
+}
+
+.title {
+	margin-bottom: 10px;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 140%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-dark);
+}
+
+
+.phone-input {
+	border: none;
+	outline: none;
+	width: 100%;
+}
+
+.phone-input-block {
+	display: flex;
+	align-items: center;
+	position: relative;
+	min-width: 292px;
+	height: 40px;
+	border: solid 1px var(--color-light);
+	border-radius: 45px;
+}

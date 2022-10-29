@@ -1,0 +1,18 @@
+@import "./../../../../../css/index.css";
+
+.when {
+
+}
+
+.title {
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 140%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-dark);
+}
+
+.date-time {
+	display: flex;
+	padding-top: 10px;
+}

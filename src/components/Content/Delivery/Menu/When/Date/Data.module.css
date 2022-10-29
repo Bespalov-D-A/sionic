@@ -1,0 +1,10 @@
+@import './../../../../../../css/index.css';
+
+.date {
+	margin-right: 20px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 140%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-gray);
+}
