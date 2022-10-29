@@ -1,0 +1,15 @@
+@import './../../../css/index.css';
+
+.order {
+	margin-right: 20px;
+	margin-bottom: 10px;
+}
+
+.title {
+	margin-bottom: 3px;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 122%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-light-blue);
+}

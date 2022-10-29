@@ -1,0 +1,9 @@
+@import "./../../../../../css/index.css";
+
+.data {
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 122%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-dark);
+}

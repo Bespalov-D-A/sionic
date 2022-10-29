@@ -1,0 +1,51 @@
+@import "./../../../../css/index.css";
+
+.order {
+	position: relative;
+	max-width: 500px;
+	padding: 20px 8px 20px 20px;
+	border: solid 1px var(--color-v-light-blue);
+	border-radius: 32px;
+}
+
+.brend {
+	width: 50px;
+	height: 50px;
+	margin: 0 10px 10px 0;
+	float: left;
+}
+
+.title {
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 130%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-dark);
+}
+
+.bar {
+	padding-top: 4px;
+}
+
+.bar-date {
+	margin-right: 10px;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 140%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-light-blue);
+}
+
+.details {
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 127.7%;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-accent-blue);
+}
+
+.info {
+	display: flex;
+	flex-flow: row wrap;
+	clear: both;
+}

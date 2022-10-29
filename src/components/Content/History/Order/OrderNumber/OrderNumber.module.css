@@ -1,0 +1,25 @@
+@import "./../../../../../css/index.css";
+
+.data {
+	position: relative;
+	display: inline-block;
+	padding-right: 20px;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 122%;
+	vertical-align: top;
+	font-feature-settings: "pnum" on, "lnum" on;
+	color: var(--color-accent-blue);
+}
+
+.data::after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: -2px;
+	width: 15px;
+	height: 15px;
+	background-image: url('./../../../../../img/icons/copy.svg');
+	background-repeat: no-repeat;
+	background-position: center center;
+}
