@@ -1,3 +1,10 @@
+export interface IimageObj {
+	id: number;
+	product_id: number;
+	image_name: string;
+	image_url: string;
+}
+
 export interface Icollection {
   id: number;
   name: string;

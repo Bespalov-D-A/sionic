@@ -7,9 +7,15 @@
 }
 
 .header {
+	width: 214px;
 	height: 138px;
 	margin-bottom: 8px;
+	text-align: center;
 	overflow: hidden;
+}
+
+.cover {
+	width: 214px	
 }
 
 .title {
