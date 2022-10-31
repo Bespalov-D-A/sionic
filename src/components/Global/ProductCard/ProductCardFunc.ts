@@ -6,5 +6,4 @@ interface IimageObj {
 }
 
 export const getUrl = (obj: IimageObj) => {
-	console.log(obj.image_url)	
 }
