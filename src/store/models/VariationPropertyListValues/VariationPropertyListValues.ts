@@ -12,8 +12,8 @@ ProductVariationPropListValues.fields = {
   title: attr(),
   value: attr(),
   product_variation_property_id: fk({
-    to: "VariationProperties",
-    as: "variationProperties",
+    to: "ProductVariationProperty",
+    as: "variationProperty",
     relatedName: "propertiesListValues",
   }),
 };
