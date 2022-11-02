@@ -1,15 +1,17 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { createReducer } from "redux-orm";
-import {authorReducer} from "./models/Author/Author";
-import {bookReducer} from "./models/Book/Book";
+import {createReducer} from "redux-orm";
+import {orm} from "./models/models";
+//import {authorReducer} from "./reducers/Author";
+//import {bookReducer} from "./reducers/Book";
 import counterSlice from "./reducers/shop";
 
-//const ormReducer = createReducer(orm)
+export const ormReducer = createReducer(orm)
 
 const rootReducer = combineReducers({
   counterSlice,
-  bookReducer,
-  authorReducer
+  //bookReducer,
+  //authorReducer,
+  ormReducer
 })
 
 const store = configureStore({
