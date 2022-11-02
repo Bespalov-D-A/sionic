@@ -10,31 +10,8 @@ import { orm } from "./store/models/models";
 interface AppProps {}
 
 const App: FC<AppProps> = ({}) => {
-  const count = useAppSelector((state) => state)
-
   useEffect(() => {
      const session = orm.session(orm.getEmptyState())
-    session.Book.create<any>({
-      id: 1,
-      title: "Don Quixote",
-      authorIds: [4,5]
-    });
-    session.Book.create<any>({
-      id: 2,
-      title: "Don Perdot",
-      authorIds: [4]
-    });
-    session.Author.create<any>({
-      id:4,
-      name: 'DEN!'
-    })
-    session.Author.create<any>({
-      id:5,
-      name: 'PASHKA!'
-    })
-    setTimeout(() => {
-      const rrr = session.Book.first()
-    }, 1000)
   }, []);
 
   return (
