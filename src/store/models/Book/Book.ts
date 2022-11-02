@@ -10,9 +10,9 @@ export class Book extends Model {
 Book.fields = {
   id: attr(),
   title: attr(),
-  authorId: fk({
+  authorIds: many({
     to: 'Author' ,
-    as: 'author',
+    as: 'authors',
     relatedName: 'books'
   })
 };

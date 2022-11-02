@@ -17,21 +17,23 @@ const App: FC<AppProps> = ({}) => {
     session.Book.create<any>({
       id: 1,
       title: "Don Quixote",
-      authorId: 4
+      authorIds: [4,5]
     });
     session.Book.create<any>({
       id: 2,
       title: "Don Perdot",
-      authorId: 4
+      authorIds: [4]
     });
     session.Author.create<any>({
       id:4,
       name: 'DEN!'
     })
+    session.Author.create<any>({
+      id:5,
+      name: 'PASHKA!'
+    })
     setTimeout(() => {
       const rrr = session.Book.first()
-      console.log(rrr.author)
-      console.log(count)
     }, 1000)
   }, []);
 
