@@ -15,10 +15,6 @@ interface ProductCardProps {
 const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
   const [cover, setCover] = useState<string | undefined>("");
 
-  useEffect(() => {
-    let image = getCover(productCard.id);
-    image.then(res => setCover(res))
-  }, []);
 
   return (
     <div className={s["product-card"]}>

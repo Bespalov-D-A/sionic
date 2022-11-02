@@ -10,9 +10,6 @@ import { orm } from "./store/models/models";
 interface AppProps {}
 
 const App: FC<AppProps> = ({}) => {
-  useEffect(() => {
-     const session = orm.session(orm.getEmptyState())
-  }, []);
 
   return (
     <div className="App">

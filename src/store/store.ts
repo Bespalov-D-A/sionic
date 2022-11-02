@@ -3,14 +3,12 @@ import {createReducer} from "redux-orm";
 import {orm} from "./models/models";
 //import {authorReducer} from "./reducers/Author";
 //import {bookReducer} from "./reducers/Book";
-import counterSlice from "./reducers/shop";
+import shopSlice from "./reducers/shop";
 
 export const ormReducer = createReducer(orm)
 
 const rootReducer = combineReducers({
-  counterSlice,
-  //bookReducer,
-  //authorReducer,
+  shopSlice,
   ormReducer
 })
 

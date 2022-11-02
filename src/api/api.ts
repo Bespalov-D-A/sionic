@@ -1,11 +1,11 @@
 import axios from "axios";
-import { Icategory, Ierror, Ivariation, IvariationProp, IvariationPropListValue, IvariationPropValue } from "../types/dataShopApiTypes";
+import { Icategory, Ierror, IproductCover, Ivariation, IvariationProp, IvariationPropListValue, IvariationPropValue } from "../types/dataShopApiTypes";
 import { IimageObj, IproductCard } from "../types/types";
 
-export const getProducts = async (): Promise<IproductCard[] | undefined> => {
+export const getProducts = async (range: string = ''): Promise<IproductCard[] | undefined> => {
   try {
     const resp = await axios.get(
-      "https://test2.sionic.ru/api/Products?range=[0,10]"
+     `https://test2.sionic.ru/api/Products${range}` 
     );
     return resp.data;
   } catch (e) {
@@ -13,12 +13,12 @@ export const getProducts = async (): Promise<IproductCard[] | undefined> => {
   }
 };
 
-export const getCover = async (id: number): Promise<string | undefined> => {
+export const getCover = async (id: string = ''): Promise<IproductCover[] | undefined> => {
   try {
-    let resp = await axios.get<IimageObj>(
+    let resp = await axios.get<IproductCover[]>(
       "https://test2.sionic.ru/api/ProductImages/" + id
     );
-    return "https://test2.sionic.ru/" + resp.data.image_url;
+    return resp.data
   } catch (e) {
     console.log(e);
   }
