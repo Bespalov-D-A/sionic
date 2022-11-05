@@ -23,4 +23,6 @@ export const shopSlice = createSlice({
   },
 });
 
+export const { dataLoading } = shopSlice.actions
+
 export default shopSlice.reducer;

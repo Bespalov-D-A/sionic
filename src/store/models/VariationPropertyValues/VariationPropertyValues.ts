@@ -2,6 +2,15 @@ import { Model, many, attr, SessionBoundModel, fk } from "redux-orm";
 
 export class ProductVariationPropertyValue extends Model {
   static modelName = "ProductVariationPropertyValue";
+  static reducer(action: any, ProductVariationPropertyValue: any, session: any) {
+    switch (action.type) {
+      case 'ADD_PRODUCT_VARIATION_PROPERTY_VALUE': {
+        ProductVariationPropertyValue.create(action.payload)
+        break
+      }
+    }
+  }
+
   toString(this: SessionBoundModel<ProductVariationPropertyValue>) {
     return `ProductVariationPropertyValue: ${this.name}`;
   }

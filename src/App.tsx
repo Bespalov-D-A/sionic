@@ -4,8 +4,6 @@ import Content from "./components/Content/Content";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import RightSide from "./components/RightSide/RightSide";
-import { useAppDispatch, useAppSelector } from "./store/hooks/hooks";
-import { orm } from "./store/models/models";
 
 interface AppProps {}
 
