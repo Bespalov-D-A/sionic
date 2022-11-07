@@ -5,7 +5,6 @@ import Cart from "./Cart/Cart";
 import Delivery from "./Delivery/Delivery";
 import Shop from "./Shop/Shop";
 import History from "./History/History";
-import { redirect } from "react-router-dom";
 import NetWork from "./Shop/NetWork";
 
 interface ContentProps {}

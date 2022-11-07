@@ -1,0 +1,36 @@
+@import "./.././../../../../css/index.css";
+
+.property {
+	display: flex;
+	justify-content: space-between;
+	padding: 4px 2px;
+	font-size: 12px;
+	font-feature-settings: "pnum" on, "lnum" on;
+	border-top: solid 1px gray;
+}
+
+.value {
+	position: relative;
+	min-width: 120px;
+	border-radius: 4px;
+	padding: 2px;
+	text-align: center;
+	background-color: var(--color-light);
+}
+
+.value.loading::after {
+		content: '';
+		display:block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		border-radius: 4px;
+		background-image: url('./../../../../../img/preloaer.svg');
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 40px;
+		opacity: 0.2;
+}
+
