@@ -1,3 +1,7 @@
+.tags {
+	position: relative;
+}
+
 .list {
 	position: relative;
 	overflow: hidden;

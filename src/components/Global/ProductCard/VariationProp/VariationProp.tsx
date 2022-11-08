@@ -16,10 +16,10 @@ const VariationProp: FC<VariationPropProp> = ({ selectedVariation }) => {
   const session = orm.session(state.ormReducer);
   const [propList, setPropList] = useState<any[] | null>(null);
   const[dataIsLoad, setDataIsLoad] = useState<boolean>(false)
-  const [switchRefreshSelectedVariation, setSwitchRefreshSelectedVariation] = useState<boolean>(false)
+  const [switchRefreshSelectedVariation, setSwitchRefreshSelectedVariation] = useState<number | null>(null)
 
-  const refreshData = (): void => {
-  setSwitchRefreshSelectedVariation(!switchRefreshSelectedVariation)
+  const refreshData = (num: number): void => {
+  setSwitchRefreshSelectedVariation(num)
   }
 
   useEffect(() => {
@@ -40,6 +40,7 @@ const VariationProp: FC<VariationPropProp> = ({ selectedVariation }) => {
    }, [selectedVariation]);
 
   useEffect(()=> {
+    
      if (!propList) {
         const list = session.ProductVariationProperty.all()
           .toModelArray()

@@ -73,6 +73,7 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
       {variationsList.length > 0 ? (
         <ProductVariations
           productId={productCard.id}
+          selectedVariation={selectedVariation}
           setSelectedVariation={setSelectedVariation}
           variationsList={variationsList}
         />
