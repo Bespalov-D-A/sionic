@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface ShopState {
   value: number;
   dataIsLoad: boolean;
+  selectedCategory: number | null
 }
 
 const initialState: ShopState = {
   value: 0,
   dataIsLoad: false,
+  selectedCategory: null,
 };
 
 export const shopSlice = createSlice({
@@ -20,9 +22,12 @@ export const shopSlice = createSlice({
     dataLoading: (state) => {
       state.dataIsLoad = true;
     },
+    setCategory: (state, action) => {
+      state.selectedCategory = action.payload
+    }
   },
 });
 
-export const { dataLoading } = shopSlice.actions
+export const { setCategory, dataLoading } = shopSlice.actions
 
 export default shopSlice.reducer;

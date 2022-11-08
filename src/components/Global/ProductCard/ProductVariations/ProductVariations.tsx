@@ -1,11 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from "react";
-import ReactDOM from "react-dom";
 import Flickity from "react-flickity-component";
-import { useAppSelector } from "../../../../store/hooks/hooks";
-import { orm } from "../../../../store/models/models";
-import { Itag } from "../../../../types/types";
-import List from "../../../Global/List";
-import Tag from "../../Tag/Tag";
+import Property from "../../Property/Property";
 import s from "./ProductVariations.module.css";
 
 interface PropertiesProps {
@@ -16,9 +11,7 @@ interface PropertiesProps {
 }
 
 const flickOptions = {
-  draggable: false,
-  freeScroll: false,
-  wrapAround: false,
+prevNextButtons: false
 };
 
 const ProductVariations: FC<PropertiesProps> = ({
@@ -31,7 +24,7 @@ const ProductVariations: FC<PropertiesProps> = ({
   const rrr = () => {
     return variationsList.map((variation) => {
       return (
-        <Tag
+        <Property
           callback={setSelectedVariation}
           variation={variation}
           key={variation.id}
@@ -65,11 +58,9 @@ const ProductVariations: FC<PropertiesProps> = ({
       <Flickity
         className={s.list}
         elementType={"div"}
-        options={{prevNextButtons: false}}
+        options={flickOptions}
         disableImagesLoaded={false}
         flickityRef={(item)=> flkty.current = item}
-        //reloadOnUpdate
-        //static
       >
         {rrr()}
       </Flickity>

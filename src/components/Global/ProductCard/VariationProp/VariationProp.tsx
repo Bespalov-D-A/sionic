@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { getProductVariationPropValue } from "../../../../api/api";
-import { createOrmObjects } from "../../../../func/func";
+import { checkVariation, createOrmObjects } from "../../../../func/func";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks/hooks";
 import { orm } from "../../../../store/models/models";
 import List from "../../List";
@@ -15,15 +15,24 @@ const VariationProp: FC<VariationPropProp> = ({ selectedVariation }) => {
   const dispatch = useAppDispatch();
   const session = orm.session(state.ormReducer);
   const [propList, setPropList] = useState<any[] | null>(null);
-  const[dataIsLoad, setDataIsLoad] = useState<boolean>(false)
-  const [switchRefreshSelectedVariation, setSwitchRefreshSelectedVariation] = useState<number | null>(null)
+  const [dataIsLoad, setDataIsLoad] = useState<boolean>(false);
+  const [loadedVariations, setLoadedVariations] = useState<number[]>([]);
+  const [switchRefreshSelectedVariation, setSwitchRefreshSelectedVariation] =
+    useState<number | null>(null);
 
+//Обновляем номер вариации,
+  //По этому id мы будем получать значения свойств
   const refreshData = (num: number): void => {
-  setSwitchRefreshSelectedVariation(num)
-  }
+    setSwitchRefreshSelectedVariation(num);
+  };
 
+  //Получаем значения свойств выбранной вариации
   useEffect(() => {
-    if (selectedVariation) {
+    if (
+      selectedVariation &&
+      checkVariation(loadedVariations, selectedVariation) === -1
+    ) {
+      setLoadedVariations([...loadedVariations, selectedVariation.id]);
       getProductVariationPropValue(
         `?filter={"product_variation_id": ${selectedVariation.id}}`
       ).then((res) =>
@@ -35,19 +44,23 @@ const VariationProp: FC<VariationPropProp> = ({ selectedVariation }) => {
           "ADD_PRODUCT_VARIATION_PROPERTY_VALUE"
         )
       );
+    } else if (
+      selectedVariation &&
+      checkVariation(loadedVariations, selectedVariation) !== -1
+    ) {
+      refreshData(selectedVariation.id);
     }
+  }, [selectedVariation]);
 
-   }, [selectedVariation]);
-
-  useEffect(()=> {
-    
-     if (!propList) {
-        const list = session.ProductVariationProperty.all()
-          .toModelArray()
-          .map((item: any) => item.ref);
-        setPropList(list);
-      }
-  },[switchRefreshSelectedVariation])
+  //Создаём список свойств вариации
+  useEffect(() => {
+    if (!propList) {
+      const list = session.ProductVariationProperty.all()
+        .toModelArray()
+        .map((item: any) => item.ref);
+      setPropList(list);
+    }
+  }, [switchRefreshSelectedVariation]);
 
   return (
     <ul>
