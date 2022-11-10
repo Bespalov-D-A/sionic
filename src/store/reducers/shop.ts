@@ -3,17 +3,19 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface ShopState {
   value: number;
   dataIsLoad: boolean;
-  selectedCategory: number | null
+  selectedCategory: number | null,
+  beforeSelectedCat: number[]
 }
 
 const initialState: ShopState = {
   value: 0,
   dataIsLoad: false,
   selectedCategory: null,
+  beforeSelectedCat: []
 };
 
 export const shopSlice = createSlice({
-  name: "counter",
+  name: "shop",
   initialState,
   reducers: {
     decrement: (state) => {
@@ -24,10 +26,13 @@ export const shopSlice = createSlice({
     },
     setCategory: (state, action) => {
       state.selectedCategory = action.payload
+    },
+    setBeforeSelectedCat: (state, action) => {
+      state.beforeSelectedCat = [...state.beforeSelectedCat, action.payload]
     }
   },
 });
 
-export const { setCategory, dataLoading } = shopSlice.actions
+export const { setCategory, setBeforeSelectedCat, dataLoading } = shopSlice.actions
 
 export default shopSlice.reducer;

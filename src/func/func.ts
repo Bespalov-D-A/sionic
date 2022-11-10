@@ -8,7 +8,7 @@ export const createObjects = (
   dataLoading: any
 ): void => {
   const subsequence = [
-    "ADD_PRODUCT",
+    //"ADD_PRODUCT",
  //   "ADD_PRODUCT_COVER",
     "ADD_PRODUCT_CATEGORY",
     //"ADD_PRODUCT_VARIATION",
@@ -26,12 +26,17 @@ export const createObjects = (
   dispatch(dataLoading());
 };
 
+const randomNumber = (min: number, max: number) => {
+  return Math.random() * (max-min) + min
+}
+
 //Создание объектов ORM в redux из массива объектов
 export const createOrmObjects = (
   dispatch: any,
   array: Ierror | any[] | undefined,
   setVariationIsLoad: any,
   refresh: any | undefined,
+  dataForRefresh: string | undefined,
   type: string
 ) => {
   if (array && Array.isArray(array)) {
@@ -39,9 +44,11 @@ export const createOrmObjects = (
       dispatch({ type: type, payload: item });
     });
     setVariationIsLoad(true);
-    if (refresh) refresh(array[0].product_variation_id);
+    if (refresh && dataForRefresh) refresh(array[0][dataForRefresh]);
+    if (refresh && dataForRefresh === 'random') refresh(randomNumber(1, 99))
   }
 };
+
 
 //Сортировка массива объектов
 export const compareNumeric = (
@@ -92,12 +99,12 @@ export const selectVariationPropValue = (
 };
 
 //Функция проверки, получались ли уже данные с сервера
-export const checkVariation = (
-  arrayVariations: number[], // idшники ранее выбранных вариаций
-  selectedVariations: { [key: string]: any } //Выбранная вариация
+export const checkData = (
+  array: number[], // idшники ранее выбранных вариаций
+  selected: { [key: string]: any } //Выбранная вариация
 ) => {
-  return arrayVariations.findIndex(
-    (item: number) => item === selectedVariations.id
+  return array.findIndex(
+    (item: number) => item === selected.id
   );
 };
 
@@ -109,4 +116,30 @@ export const checkVariation = (
       dispatch({ type: "ADD_PRODUCT_COVER", payload: obj });
       setFunc(obj);
     };
+
+//Функция нажатия на стрелки при переключении вариации
+export  const selectVariationFunc = (
+    value: string,
+    list: any[],
+    id: number,
+    callback: any,
+    step:()=>void
+  ) => {
+    let ind = list.findIndex((item) => item.id === id);
+    switch (value) {
+      case "next":
+        if (list[list.length - 1].id === id) break;
+        callback(list[ind + 1]);
+        step()
+        break;
+      case "previous":
+        if (list[0].id === id) break;
+        callback(list[ind - 1]);
+        step()
+        break;
+      default:
+        break;
+    }
+  };
+
 

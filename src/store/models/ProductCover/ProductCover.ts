@@ -5,7 +5,7 @@ export class ProductCover extends Model {
   static reducer(action: any, ProductCover: any, session: any) {
     switch (action.type) {
       case 'ADD_PRODUCT_COVER': {
-        ProductCover.create(action.payload)
+        ProductCover.upsert(action.payload)
         break
       }
     }

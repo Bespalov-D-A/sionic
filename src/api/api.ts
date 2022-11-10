@@ -16,7 +16,7 @@ export const getProducts = async (range: string = ''): Promise<IproductCard[] | 
 export const getCover = async (id: string = ''): Promise<IproductCover[] | undefined> => {
   try {
     let resp = await axios.get<IproductCover[]>(
-      "https://test2.sionic.ru/api/ProductImages/" + id
+      'https://test2.sionic.ru/api/ProductImages?filter={"product_id":' + id + '}'
     );
     return resp.data
   } catch (e) {

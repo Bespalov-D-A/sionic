@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { getProductVariationPropValue } from "../../../../api/api";
-import { checkVariation, createOrmObjects } from "../../../../func/func";
+import { checkData, createOrmObjects } from "../../../../func/func";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks/hooks";
 import { orm } from "../../../../store/models/models";
 import List from "../../List";
@@ -30,7 +30,7 @@ const VariationProp: FC<VariationPropProp> = ({ selectedVariation }) => {
   useEffect(() => {
     if (
       selectedVariation &&
-      checkVariation(loadedVariations, selectedVariation) === -1
+      checkData(loadedVariations, selectedVariation) === -1
     ) {
       setLoadedVariations([...loadedVariations, selectedVariation.id]);
       getProductVariationPropValue(
@@ -41,12 +41,13 @@ const VariationProp: FC<VariationPropProp> = ({ selectedVariation }) => {
           res,
           setDataIsLoad,
           refreshData,
+          'product_variation_id',
           "ADD_PRODUCT_VARIATION_PROPERTY_VALUE"
         )
       );
     } else if (
       selectedVariation &&
-      checkVariation(loadedVariations, selectedVariation) !== -1
+      checkData(loadedVariations, selectedVariation) !== -1
     ) {
       refreshData(selectedVariation.id);
     }

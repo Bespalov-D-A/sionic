@@ -11,12 +11,14 @@ import {
 } from "../../../types/dataShopApiTypes";
 import { getCover, getProductVariations } from "../../../api/api";
 import {
+  checkData,
   compareNumeric,
   createOrmObjects,
   setProductCover,
 } from "../../../func/func";
 import ProductVariations from "./ProductVariations/ProductVariations";
 import VariationProp from "./VariationProp/VariationProp";
+import { setBeforeSelectedCat } from "../../../store/reducers/shop";
 
 interface ProductCardProps {
   productCard: Iproduct;
@@ -25,6 +27,7 @@ interface ProductCardProps {
 const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
   const state = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
+  const session = orm.session(state.ormReducer);
   const [selectedVariation, setSelectedVariation] = useState<Ivariation | null>(
     null
   );
@@ -32,25 +35,45 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
   const [variationsList, setVariationsList] = useState<any[]>([]);
   const [cover, setCover] = useState<IproductCover | null>(null);
   const baseUrl = "https://test2.sionic.ru";
+  const beforeSelectedCat = useAppSelector(
+    (state: any) => state.shopSlice.beforeSelectedCat
+  );
+
+  const selectCat = useAppSelector(
+    (state: any) => state.shopSlice.selectedCategory
+  );
 
   useEffect(() => {
     if (!variationIsLoad) {
-      getProductVariations(
-        '?filter={"product_id":' + productCard.id + "}"
-      ).then((res) =>
-        createOrmObjects(
-          dispatch,
-          res,
-          setVariationIsLoad,
-          undefined,
-          "ADD_PRODUCT_VARIATION"
-        )
-      );
-    }
+      if (
+        checkData(beforeSelectedCat, { id: productCard.category_id }) === -1
+      ) {
+        dispatch(setBeforeSelectedCat(selectCat));
 
-    getCover(`${productCard.id}`).then((res: any) =>
-      setProductCover(dispatch, res, setCover)
-    );
+        getProductVariations(
+          '?filter={"product_id":' + productCard.id + "}"
+        ).then((res) =>
+          createOrmObjects(
+            dispatch,
+            res,
+            setVariationIsLoad,
+            undefined,
+            undefined,
+            "ADD_PRODUCT_VARIATION"
+          )
+        );
+
+        getCover(`${productCard.id}`).then((res: any) =>
+          setProductCover(dispatch, res[0], setCover)
+        );
+      } else {
+        let coverInSes = session.ProductCover.get({
+          product_id: productCard.id,
+        }).ref;
+        setCover(coverInSes);
+        setVariationIsLoad(true);
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -72,17 +95,17 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
   return (
     <div className={s["product-card"]}>
       <div className={s.header}>
-          <div className={s.img}>
-        {!cover ? (
-          ""
-        ) : (
+        <div className={s.img}>
+          {!cover ? (
+            ""
+          ) : (
             <img src={baseUrl + cover.image_url} alt="" className={s.cover} />
-        )}
-          </div>
+          )}
+        </div>
       </div>
       <div
         className={
-          s.variations + " " + (variationsList.length === 0 ? s.loading : '')
+          s.variations + " " + (variationsList.length === 0 ? s.loading : "")
         }
       >
         {variationsList.length > 0 ? (

@@ -5,7 +5,7 @@ export class ProductVariationPropertyValue extends Model {
   static reducer(action: any, ProductVariationPropertyValue: any, session: any) {
     switch (action.type) {
       case 'ADD_PRODUCT_VARIATION_PROPERTY_VALUE': {
-        ProductVariationPropertyValue.create(action.payload)
+        ProductVariationPropertyValue.upsert(action.payload)
         break
       }
     }
