@@ -6,25 +6,30 @@ import Btn from "./Btn/Btn";
 import { IimageObj, IproductCard } from "../../../types/types";
 import axios from "axios";
 import Variation from "../Variation/Variation";
-import {getCover} from "../../../api/api";
 
 interface ProductCardProps {
   productCard: IproductCard;
 }
 
 const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
-  const [cover, setCover] = useState<string | undefined>("");
+  const [cover, setCover] = useState<string>("");
 
   useEffect(() => {
-    let image = getCover(productCard.id);
-    image.then(res => setCover(res))
+    getCover();
   }, []);
+
+  const getCover = async () => {
+    let resp = await axios.get<IimageObj>(
+      "https://test2.sionic.ru/api/ProductImages/" + productCard.id
+    );
+    setCover("https://test2.sionic.ru/" + resp.data.image_url);
+  };
 
   return (
     <div className={s["product-card"]}>
       <Variation productID={productCard.id}/>
       <div className={s.header}>
-        {cover?.length == 0 ? (
+        {cover.length == 0 ? (
           "Loading..."
         ) : (
           <>
