@@ -5,7 +5,6 @@ import Tags from "./Tags/Tags";
 import Btn from "./Btn/Btn";
 import { IimageObj, IproductCard } from "../../../types/types";
 import axios from "axios";
-import Variation from "../Variation/Variation";
 
 interface ProductCardProps {
   productCard: IproductCard;
@@ -27,7 +26,6 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
 
   return (
     <div className={s["product-card"]}>
-      <Variation productID={productCard.id}/>
       <div className={s.header}>
         {cover.length == 0 ? (
           "Loading..."
