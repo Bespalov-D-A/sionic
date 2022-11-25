@@ -1,5 +1,4 @@
-.categories {
+.tags {
 	display: flex;
-	flex-flow: row wrap;
 	margin-bottom: 20px;
 }

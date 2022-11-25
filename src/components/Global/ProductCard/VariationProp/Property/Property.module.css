@@ -3,7 +3,6 @@
 .property {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
 	padding: 4px 2px;
 	font-size: 12px;
 	font-feature-settings: "pnum" on, "lnum" on;
@@ -13,7 +12,6 @@
 .value {
 	position: relative;
 	min-width: 120px;
-	min-height: 18px;
 	border-radius: 4px;
 	padding: 2px;
 	text-align: center;

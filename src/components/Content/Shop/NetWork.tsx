@@ -24,7 +24,7 @@ const NetWork: FC<NetWorkProps> = ({ children }) => {
   useEffect(() => {
     Promise.all([
       getProducts('?range=[0,15]'),
-      //getCover(),
+      getCover(),
       getCategories(),
       getProductVariationProp(),
       getProductVariationPropListValues(),

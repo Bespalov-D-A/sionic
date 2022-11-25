@@ -3,7 +3,7 @@
   background-color: #fff;
 }
 .flickity-button:hover {
-  cursor: pointer;
+  background-color: #f90;
 }
 
 .flickity-prev-next-button {
