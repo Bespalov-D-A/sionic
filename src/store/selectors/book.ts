@@ -1,10 +1,4 @@
-import { createSelector, ORM } from "redux-orm";
-import {useAppSelector} from "../hooks/hooks";
+import { createSelector } from "redux-orm";
 import { orm } from "./../models/models";
 
-export const itIsProduct = createSelector(orm, () => {
-  let pr = useAppSelector(state => state)
-  let ses = orm.session(pr.ormReducer)
-  let my = ses['Product'].all().toRefArray()
-  return my
-})
+export const itIsBook = createSelector(orm, orm.get('Book'))

@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from "react";
 
 interface ListProps<T> {
-  items:  T[] | undefined;
+  items: T[] | undefined;
   renderItem: (item: T) => ReactNode;
 }
 

@@ -9,16 +9,15 @@ import {ProductVariationPropListValues} from "./VariationPropertyListValues/Vari
 import {ProductVariationPropertyValue} from "./VariationPropertyValues/VariationPropertyValues";
 
 export const orm = new ORM({
-  stateSelector: (state) => state.ormReducer
+  stateSelector: (state) => state.ormReducer,
 });
 
 orm.register(
-  Category,
-  Product,
-  ProductCover,
-  //proxyClassForORM(ProductCover),
-  ProductVariation,
-  ProductVariationProperty,
-  ProductVariationPropertyValue,
-  ProductVariationPropListValues,
+  proxyClassForORM(Category),
+  proxyClassForORM(Product),
+  proxyClassForORM(ProductCover),
+  proxyClassForORM(ProductVariation),
+  proxyClassForORM(ProductVariationProperty),
+  proxyClassForORM(ProductVariationPropertyValue),
+  proxyClassForORM(ProductVariationPropListValues),
 );

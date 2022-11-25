@@ -3,21 +3,18 @@ import Price from "./Price/Price";
 import s from "./ProductCard.module.css";
 import Tags from "./Tags/Tags";
 import Btn from "./Btn/Btn";
+import { IimageObj, IproductCard } from "../../../types/types";
+import axios from "axios";
 import Variation from "../Variation/Variation";
-import {orm} from "../../../store/models/models";
-import {useAppSelector} from "../../../store/hooks/hooks";
-import {Iproduct} from "../../../types/dataShopApiTypes";
+import {getCover} from "../../../api/api";
 
 interface ProductCardProps {
-  productCard: Iproduct;
+  productCard: IproductCard;
 }
 
 const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
-  const state = useAppSelector(state => state)
-    const session = orm.mutableSession(state.ormReducer)
-    const cover = session.Cover.at(productCard.id)
-    //let ggg = session.ProductCover.all().at(productCard.id)
-    console.log(productCard)
+  const [cover, setCover] = useState<string | undefined>("");
+
 
   return (
     <div className={s["product-card"]}>

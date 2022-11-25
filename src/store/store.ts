@@ -5,7 +5,7 @@ import {orm} from "./models/models";
 //import {bookReducer} from "./reducers/Book";
 import shopSlice from "./reducers/shop";
 
-const ormReducer = createReducer(orm)
+export const ormReducer = createReducer(orm)
 
 const rootReducer = combineReducers({
   shopSlice,

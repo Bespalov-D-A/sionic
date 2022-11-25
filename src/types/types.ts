@@ -1,13 +1,8 @@
-import { Ref } from "redux-orm";
-import { Iproduct } from "./dataShopApiTypes";
-
-export type productsType = Iproduct[] | undefined 
-
 export interface IimageObj {
-  id: number;
-  product_id: number;
-  image_name: string;
-  image_url: string;
+	id: number;
+	product_id: number;
+	image_name: string;
+	image_url: string;
 }
 
 export interface Icollection {
