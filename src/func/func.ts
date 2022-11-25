@@ -35,7 +35,7 @@ export const createOrmObjects = (
       dispatch({ type: type, payload: item });
     });
     setVariationIsLoad(true);
-    if (refresh) refresh(array[0].product_variation_id);
+    if (refresh) refresh();
   }
 };
 

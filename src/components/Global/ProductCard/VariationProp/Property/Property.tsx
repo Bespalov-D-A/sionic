@@ -8,7 +8,7 @@ import {
 import { orm } from "../../../../../store/models/models";
 
 interface PropProps {
-  switchData: number | null;
+  switchData: boolean;
   property: any;
   selectedVariation: any;
 }
@@ -27,19 +27,16 @@ const Property: FC<PropProps> = ({
   //useEffect(()=>console.log(property),[])
 
   useEffect(() => {
-    if (selectedVariation && switchData) {
-      const getDataValue = () => {
-        const propValue = session.ProductVariationPropertyValue.all()
-          .filter(
-            (item: any) =>
-              item.product_variation_id === switchData &&
-              item.product_variation_property_id === property.id
-          )
-          .toModelArray();
-        return propValue;
-      };
-      let data = getDataValue();
-      setValueObj(selectVariationPropValue(session, data, property));
+    if (selectedVariation) {
+      const propValue = session.ProductVariationPropertyValue.all()
+        .filter(
+          (item: any) =>
+            item.product_variation_id === selectedVariation.id &&
+            item.product_variation_property_id === property.id
+        )
+        .toModelArray();
+      console.log(propValue);
+      setValueObj(selectVariationPropValue(session, propValue, property));
       setDataIsLoad(true);
     }
   }, [switchData]);
@@ -52,12 +49,12 @@ const Property: FC<PropProps> = ({
     <li className={s.property}>
       <span>{property.name}</span>
       <p
-        className={s.value + " " + (!dataIsLoad ? s.loading : "")}
-        style={{
-          color: !dataIsLoad ? "#727280" : "",
-        }}
-      >
-        {valueObj && valueObj.value}
+        className={s.value + ' ' + (!dataIsLoad ? s.loading : '')}
+        style={{ 
+          color: !dataIsLoad ? '#727280' : ''
+        }}>
+        { valueObj && valueObj.value}
+      
       </p>
     </li>
   );
