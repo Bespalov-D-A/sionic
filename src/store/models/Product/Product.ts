@@ -1,32 +1,21 @@
-import { Model, many, attr, SessionBoundModel, fk, QuerySet } from "redux-orm";
-import {AnyModel} from "redux-orm/Model";
-
-interface ProductData {
-  getModelById: any;
-}
+import { Model, many, attr, SessionBoundModel, fk } from "redux-orm";
 
 export class Product extends Model {
   static modelName = "Product";
 
-
-
  static reducer = (action: any, Product: any, session: any) => {
     switch (action.type) {
       case 'ADD_PRODUCT': {
-        Product.upsert(action.payload)  
+        Product.create(action.payload)  
         break
       }
     }
   }
 
-
   toString(this: SessionBoundModel<Product>) {
     return `Product: ${this.name}`;
   }
-
 }
-
-
 
 
 Product.fields = {

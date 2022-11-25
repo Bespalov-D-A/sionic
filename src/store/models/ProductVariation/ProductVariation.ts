@@ -5,7 +5,7 @@ export class ProductVariation extends Model {
   static reducer(action: any, ProductVariation: any, session: any) {
     switch (action.type) {
       case 'ADD_PRODUCT_VARIATION': {
-        ProductVariation.upsert(action.payload)
+        ProductVariation.create(action.payload)
         break
       }
     }

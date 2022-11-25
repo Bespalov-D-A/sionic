@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import Flickity from "react-flickity-component";
-import { selectVariationFunc } from "../../../../func/func";
 import Property from "../../Property/Property";
 import s from "./ProductVariations.module.css";
 
@@ -12,7 +11,7 @@ interface PropertiesProps {
 }
 
 const flickOptions = {
-  prevNextButtons: false,
+prevNextButtons: false
 };
 
 const ProductVariations: FC<PropertiesProps> = ({
@@ -22,7 +21,7 @@ const ProductVariations: FC<PropertiesProps> = ({
 }) => {
   let flkty = useRef<any>();
 
-  const variationListRemap = () => {
+  const rrr = () => {
     return variationsList.map((variation) => {
       return (
         <Property
@@ -34,35 +33,36 @@ const ProductVariations: FC<PropertiesProps> = ({
     });
   };
 
-  const nextPrevClick = (direction: "next" | "previous") => {
-    let step = () => flkty.current[direction]();
-    selectVariationFunc(
-      direction,
-      variationsList,
-      selectedVariation.id,
-      setSelectedVariation,
-      step
-    );
-  };
+  const selectVariationFunc = (value: string) => {
+    let ind = variationsList.findIndex(item => item.id === selectedVariation.id )
+    switch(value) {
+      case 'next':
+      if(variationsList[variationsList.length - 1].id === selectedVariation.id) break
+      setSelectedVariation(variationsList[ind + 1])
+        console.log(flkty.current)
+      flkty.current.next()
+      break;
+      case 'prev':
+      if(variationsList[0].id === selectedVariation.id) break
+      setSelectedVariation(variationsList[ind - 1])
+      flkty.current.previous()
+      break;
+      default: break
+    }
+  }
 
   return (
     <div className={s.tags}>
-      <div
-        onClick={() => nextPrevClick("previous")}
-        className={"flickity-button flickity-prev-next-button previous"}
-      ></div>
-      <div
-        onClick={() => nextPrevClick("next")}
-        className={"flickity-button flickity-prev-next-button next"}
-      ></div>
+      <div onClick={()=> selectVariationFunc('prev')}className={'flickity-button flickity-prev-next-button previous'}></div>
+      <div onClick={()=> selectVariationFunc('next')}className={'flickity-button flickity-prev-next-button next'}></div>
       <Flickity
         className={s.list}
         elementType={"div"}
         options={flickOptions}
         disableImagesLoaded={false}
-        flickityRef={(item) => (flkty.current = item)}
+        flickityRef={(item)=> flkty.current = item}
       >
-        {variationListRemap()}
+        {rrr()}
       </Flickity>
     </div>
   );
