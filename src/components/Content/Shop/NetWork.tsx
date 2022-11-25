@@ -23,12 +23,13 @@ const NetWork: FC<NetWorkProps> = ({ children }) => {
 
   useEffect(() => {
     Promise.all([
-      getProducts('?range=[0,15]'),
+      getProducts(),
       getCover(),
       getCategories(),
+      getProductVariations(),
       getProductVariationProp(),
       getProductVariationPropListValues(),
-      //getProductVariationPropValue(),
+      getProductVariationPropValue(),
     ]).then((result: any[]) => createObjects(dispatch, result, dataLoading));
   }, []);
 

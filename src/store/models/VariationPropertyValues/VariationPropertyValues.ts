@@ -21,7 +21,7 @@ ProductVariationPropertyValue.fields = {
   product_variation_id: fk({
     to: "ProductVariation",
     as: "productVariation",
-    relatedName: "productVariationProperty",
+    relatedName: "productVariationProperyValues",
   }),
   product_variation_property_id: fk({
     to: "ProductVariationProperty",

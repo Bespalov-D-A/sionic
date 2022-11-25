@@ -48,11 +48,10 @@ const Properties: FC<PropertiesProps> = ({}) => {
     <div className={s.tags}>
       <List
         items={superTags}
-        renderItem={(tag: Itag) => <Tag callback={console.log} variation={tag} key={tag.id} />}
+        renderItem={(tag: Itag) => <Tag tag={tag} key={tag.id} />}
       />
     </div>
   );
 };
 
 export default Properties;
-

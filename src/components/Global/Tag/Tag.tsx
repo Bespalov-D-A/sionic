@@ -1,23 +1,18 @@
-import React, { FC } from "react";
-import { Itag } from "../../../types/types";
-import s from "./Tag.module.css";
+import React, {FC} from 'react'
+import {Itag} from '../../../types/types';
+import s from './Tag.module.css'
 
 interface TagProps {
-  variation: any;
-  callback: any;
+  tag: Itag;
 }
 
-const Tag: FC<TagProps> = ({ variation, callback }) => {
+const Tag: FC<TagProps> = ({tag}) => {
   const style = {
-    backgroundColor: 'brown',
-  };
+    backgroundColor: tag.color
+  }
 
-  return (
-    <div onClick={() => callback(variation)} style={style} className={s.tag}>
-      {variation.title}
-      {variation.price}
-    </div>
-  );
-};
+return <div style={style} className={s.tag}>{tag.title}</div>
+}
 
-export default Tag;
+
+export default Tag

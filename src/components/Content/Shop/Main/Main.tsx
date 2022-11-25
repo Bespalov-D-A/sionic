@@ -1,6 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Ref } from "redux-orm";
 import { useAppSelector } from "../../../../store/hooks/hooks";
 import { orm } from "../../../../store/models/models";
+import { itIsProduct } from "../../../../store/selectors/book";
 import { Iproduct } from "../../../../types/dataShopApiTypes";
 import { productsType } from "../../../../types/types";
 import List from "../../../Global/List";
@@ -14,9 +17,7 @@ const Main: FC<MainProps> = ({}) => {
   const state = useAppSelector((state: any) => state);
 
   useEffect(() => {
-    const session = orm.session(state.ormReducer)
-    const productArray = session.Product.all().toModelArray().map(item => {return item.ref})
-    setProducts(productArray)
+    console.log(state)
   }, []);
 
   return (
