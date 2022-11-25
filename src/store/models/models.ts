@@ -1,4 +1,6 @@
 import { ORM } from "redux-orm";
+import {Author} from "./Author/Author";
+import {Book} from "./Book/Book";
 import {Category} from "./Category/Category";
 import {Product} from "./Product/Product";
 import {ProductCover} from "./ProductCover/ProductCover";
@@ -13,6 +15,8 @@ export const orm = new ORM({
 });
 
 orm.register(
+  proxyClassForORM(Book), 
+  proxyClassForORM(Author),
   proxyClassForORM(Category),
   proxyClassForORM(Product),
   proxyClassForORM(ProductCover),
