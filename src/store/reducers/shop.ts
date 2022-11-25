@@ -1,26 +1,21 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface ShopState {
   value: number;
-  dataIsLoad: boolean;
 }
 
 const initialState: ShopState = {
-  value: 0,
-  dataIsLoad: false,
-};
+  value: 0
+}
 
-export const shopSlice = createSlice({
-  name: "counter",
+export const counterSlice = createSlice({
+  name: 'counter',
   initialState,
   reducers: {
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    dataLoading: (state) => {
-      state.dataIsLoad = true;
-    },
-  },
-});
+  decrement: state => {
+      state.value -= 1
+    }
+  }
+})
 
-export default shopSlice.reducer;
+export default counterSlice.reducer

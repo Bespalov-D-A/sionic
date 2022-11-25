@@ -11,7 +11,7 @@ ProductCover.fields = {
   id: attr(),
   image_name: attr(),
   image_url: attr(),
-  product_id:fk({
+  product_id:oneToOne({
     to: 'Product' ,
     as: 'product',
     relatedName: 'cover'
