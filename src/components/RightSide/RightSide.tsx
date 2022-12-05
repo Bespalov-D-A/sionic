@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useState } from "react";
 import { Icollection } from "../../types/types";
-import List from "../Global/List";
 import Collection from "./Collection/Collection";
 import s from "./RightSide.module.css";
 import Sale from "./Sale/Sale";
 import collectionsData from './../../data/Collections.json'
+import List from "../common/List";
 
 interface RightSideProps {}
 

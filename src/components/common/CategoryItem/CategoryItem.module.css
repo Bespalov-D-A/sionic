@@ -1,0 +1,8 @@
+.category {
+	margin: 4px;
+	padding: 6px;
+	border-radius: 5px;
+	white-space: nowrap;
+	color: #fff;
+	background: brown;
+}

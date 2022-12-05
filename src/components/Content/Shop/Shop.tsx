@@ -1,9 +1,8 @@
-import React, { FC } from "react";
-import ProductCard from "../../Global/ProductCard/ProductCard";
+import  { FC } from "react";
 import Top from "./Top/Top";
 import s from "./Shop.module.css";
-import Tags from "./Tags/Tags";
 import Main from "./Main/Main";
+import Categories from "./Categories/Categories";
 
 interface ShopProps {}
 
@@ -11,7 +10,7 @@ const Shop: FC<ShopProps> = ({}) => {
   return (
     <div className={s.shop}>
       <Top />
-      <Tags />
+      <Categories />
       <Main />
     </div>
   );

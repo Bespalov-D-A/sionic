@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Logo from "../../Global/Logo/Logo";
+import Logo from "../../common/Logo/Logo";
 import s from './FooterContent.module.css'
 
 interface FooterContentProps {}

@@ -4,7 +4,7 @@ import Find from './Find/Find'
 import Location from './Location/Location'
 import ProfilePhoto from './ProfilePhoto/ProfilePhoto'
 import s from './Header.module.css'
-import Logo from '../Global/Logo/Logo'
+import Logo from '../common/Logo/Logo'
 
 interface HeaderProps {
 }

@@ -8,6 +8,7 @@ import RightSide from "./components/RightSide/RightSide";
 interface AppProps {}
 
 const App: FC<AppProps> = ({}) => {
+
   return (
     <div className="App">
       <div className={s.wrapper}>
