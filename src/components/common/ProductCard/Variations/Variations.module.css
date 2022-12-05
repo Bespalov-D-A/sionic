@@ -1,0 +1,9 @@
+.variations {
+	position: relative;
+}
+
+.list {
+	position: relative;
+	overflow: hidden;
+	outline: none;
+}

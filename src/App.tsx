@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import s from "./App.module.css";
 import Content from "./components/Content/Content";
 import Footer from "./components/Footer/Footer";

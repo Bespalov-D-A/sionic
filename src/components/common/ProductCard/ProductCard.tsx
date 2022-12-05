@@ -56,7 +56,7 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
         )}
       </div>
       <div className={s["title-block"]}>
-            <Variations setSelectedVariation={setSelectedVariation} productId={id}/>
+            <Variations selectedVariation={selectedVariation} setSelectedVariation={setSelectedVariation} productId={id}/>
         <p className={s.title}>{productCard.name}</p>
         <Properties selectedVariation={selectedVariation}/>
       </div>
