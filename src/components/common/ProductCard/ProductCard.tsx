@@ -1,21 +1,40 @@
 import React, { FC, useEffect, useState } from "react";
 import Price from "./Price/Price";
 import s from "./ProductCard.module.css";
-import Tags from "./Tags/Tags";
 import Btn from "./Btn/Btn";
 import axios from "axios";
-import {IProduct, IProductCover} from "../../../types/productTypes";
+import { IProduct, IProductCover } from "../../../types/productTypes";
+import { useLoader } from "../../../hooks/useLoader";
+import { params } from "../../../types/apiTypes";
+import { useAppDispatch } from "../../../hooks/useAppDispatch";
+import { ADD_PRODUCT_VARIATION_PACK } from "../../../store/models/ProductVariation/ProductVariation";
+import { variationService } from "../../../API/variationService";
+import {useAppSelector} from "../../../hooks/useAppSelector";
+import {useVariation} from "../../../hooks/useVariation";
+import Variations from "./Variations/Variations";
 
 interface ProductCardProps {
   productCard: IProduct;
 }
 
 const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
+  const {id} = productCard
+  const dispatch = useAppDispatch();
+  const state = useAppSelector(state => state)
+  const [isFetch, isLoad, error]: any = useLoader(async (params: params) => {
+    const response = await variationService.getProductVariation(params);
+    dispatch({ type: ADD_PRODUCT_VARIATION_PACK, payload: response.data });
+  });
+
   const [cover, setCover] = useState<string>("");
 
   useEffect(() => {
-    getCover();
+    getCover()
+    isFetch({
+      filter: `{"product_id":${id}}`
+    });
   }, []);
+
 
   const getCover = async () => {
     let resp = await axios.get<IProductCover>(
@@ -32,11 +51,12 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
         ) : (
           <>
             <img src={cover} alt="" className={s.cover} />
-            <Tags />
           </>
         )}
       </div>
       <div className={s["title-block"]}>
+
+            <Variations productId={id}/>
         <p className={s.title}>{productCard.name}</p>
       </div>
       <Price />

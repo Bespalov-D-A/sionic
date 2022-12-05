@@ -1,3 +1,10 @@
+export interface IProductVariation {
+  id: number,
+  product_id: number,
+  price: number,
+  stock: number
+}
+
 export interface ICategory {
   id: number;
   name: string;
