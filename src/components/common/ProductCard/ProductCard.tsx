@@ -12,6 +12,7 @@ import { variationService } from "../../../API/variationService";
 import {useAppSelector} from "../../../hooks/useAppSelector";
 import {useVariation} from "../../../hooks/useVariation";
 import Variations from "./Variations/Variations";
+import Properties from "./Properties/Properties";
 
 interface ProductCardProps {
   productCard: IProduct;
@@ -19,10 +20,12 @@ interface ProductCardProps {
 
 const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
   const {id} = productCard
+  const [selectedVariation, setSelectedVariation] = useState<number | null>(null)
   const dispatch = useAppDispatch();
   const state = useAppSelector(state => state)
   const [isFetch, isLoad, error]: any = useLoader(async (params: params) => {
     const response = await variationService.getProductVariation(params);
+    setSelectedVariation(response.data[0].id)
     dispatch({ type: ADD_PRODUCT_VARIATION_PACK, payload: response.data });
   });
 
@@ -54,9 +57,9 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
         )}
       </div>
       <div className={s["title-block"]}>
-
             <Variations productId={id}/>
         <p className={s.title}>{productCard.name}</p>
+        <Properties selectedVariation={selectedVariation}/>
       </div>
       <Price />
       <Btn />

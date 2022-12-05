@@ -1,3 +1,13 @@
+export interface IProductVariationPropertyValues {
+  id: number,
+  product_variation_id: number,
+  product_variation_property_id: number,
+  value_string: string,
+  value_int: number,
+  value_float: string,
+  product_variation_property_list_value_id: number
+}
+
 export interface IProductVariationPropertyListValues {
   id: number;
   product_variation_property_id: number;

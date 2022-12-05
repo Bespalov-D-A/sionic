@@ -4,6 +4,7 @@ import {
 	IProductVariation,
 	IProductVariationProperties,
 	IProductVariationPropertyListValues,
+	IProductVariationPropertyValues,
 } from "../types/productTypes";
 
 export class variationService {
@@ -26,6 +27,14 @@ export class variationService {
 	static async getProductVariationPropertyListValues(params: params = {}) {
 		const response = await axios.get<IProductVariationPropertyListValues[]>(
 			"https://test2.sionic.ru/ProductVariationPropertyListValues",
+			{ params }
+		);
+		return response;
+	}
+
+		static async getProductVariationPropertyValues(params: params = {}) {
+		const response = await axios.get<IProductVariationPropertyValues[]>(
+			"https://test2.sionic.ru/ProductVariationPropertyValues",
 			{ params }
 		);
 		return response;

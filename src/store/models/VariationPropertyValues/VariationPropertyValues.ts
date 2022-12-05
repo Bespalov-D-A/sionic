@@ -1,18 +1,17 @@
-import { Model, many, attr, SessionBoundModel, fk } from "redux-orm";
+import { Model,  attr,  fk } from "redux-orm";
+import {addPackDataCase} from "../../cases/commonCases";
+
+export const ADD_PRODUCT_VARIATION_PROPERTY_VALUE = 'ADD_PRODUCT_VARIATION_PROPERTY_VALUE'
 
 export class ProductVariationPropertyValue extends Model {
   static modelName = "ProductVariationPropertyValue";
   static reducer(action: any, ProductVariationPropertyValue: any, session: any) {
-    switch (action.type) {
-      case 'ADD_PRODUCT_VARIATION_PROPERTY_VALUE': {
-        ProductVariationPropertyValue.upsert(action.payload)
-        break
+    const {payload, type} = action
+    switch (type) {
+      case ADD_PRODUCT_VARIATION_PROPERTY_VALUE: {
+        return addPackDataCase(payload, ProductVariationPropertyValue)
       }
     }
-  }
-
-  toString(this: SessionBoundModel<ProductVariationPropertyValue>) {
-    return `ProductVariationPropertyValue: ${this.name}`;
   }
 }
 
@@ -25,7 +24,7 @@ ProductVariationPropertyValue.fields = {
   }),
   product_variation_property_id: fk({
     to: "ProductVariationProperty",
-    as: "productVariationProperty",
+    //as: "productVariationProperty",
     relatedName: "productVariationPropertyValues",
   }),
   value_string: attr(),
