@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import {axiosErrorHandler} from "../utilites/fetch";
 
@@ -9,6 +8,7 @@ export const useLoader = (callback:  any) => {
   const isFetch = async (...args:any) => {
     try {
       setIsLoad(true);
+      setError(null)
       await callback(...args);
     } catch (e) {
       axiosErrorHandler(e, setError)

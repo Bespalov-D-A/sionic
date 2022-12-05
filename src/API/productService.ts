@@ -1,11 +1,6 @@
 import axios from "axios";
+import {params} from "../types/apiTypes";
 import {IProduct, IProductCover} from "../types/productTypes";
-
-interface params {
-	sort?: string[],
-	range?: number[],
-	filter?: string
-}
 
 export class productService {
 	static async getProducts(params: params = {}) {
