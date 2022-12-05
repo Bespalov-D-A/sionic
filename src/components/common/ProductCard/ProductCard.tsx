@@ -35,7 +35,6 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
     });
   }, []);
 
-
   const getCover = async () => {
     let resp = await axios.get<IProductCover>(
       "https://test2.sionic.ru/api/ProductImages/" + productCard.id
