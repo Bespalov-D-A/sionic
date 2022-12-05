@@ -10,7 +10,6 @@ import { useAppDispatch } from "../../../hooks/useAppDispatch";
 import { ADD_PRODUCT_VARIATION_PACK } from "../../../store/models/ProductVariation/ProductVariation";
 import { variationService } from "../../../API/variationService";
 import {useAppSelector} from "../../../hooks/useAppSelector";
-import {useVariation} from "../../../hooks/useVariation";
 import Variations from "./Variations/Variations";
 import Properties from "./Properties/Properties";
 
@@ -57,7 +56,7 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
         )}
       </div>
       <div className={s["title-block"]}>
-            <Variations productId={id}/>
+            <Variations setSelectedVariation={setSelectedVariation} productId={id}/>
         <p className={s.title}>{productCard.name}</p>
         <Properties selectedVariation={selectedVariation}/>
       </div>
