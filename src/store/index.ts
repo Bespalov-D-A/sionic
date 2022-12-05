@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createReducer } from "redux-orm";
 import { orm } from "./models/models";
-import shopSlice from "./slices/shopSlice";
+import commonSlice from "./slices/commonSlice";
 
 export const ormReducer = createReducer(orm);
 
 export const store = configureStore({
   reducer: {
     ormReducer,
-    shopSlice,
+    commonSlice,
   },
 });
 

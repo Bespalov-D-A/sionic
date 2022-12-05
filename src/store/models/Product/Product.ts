@@ -1,5 +1,8 @@
-import { Model, many, attr, SessionBoundModel, fk, QuerySet } from "redux-orm";
-import {AnyModel} from "redux-orm/Model";
+
+import { Model,  attr, SessionBoundModel, fk } from "redux-orm";
+import {addPackDataCase} from "../../cases/commonCases";
+
+export const ADD_PRODUCTS_PACK = 'ADD_PRODUCTS_PACK'
 
 interface ProductData {
   getModelById: any;
@@ -8,26 +11,14 @@ interface ProductData {
 export class Product extends Model {
   static modelName = "Product";
 
-
-
  static reducer = (action: any, Product: any, session: any) => {
-    switch (action.type) {
-      case 'ADD_PRODUCT': {
-        Product.upsert(action.payload)  
-        break
-      }
+   const {type, payload} = action
+    switch (type) {
+      case ADD_PRODUCTS_PACK:
+        return addPackDataCase(payload, Product)
     }
   }
-
-
-  toString(this: SessionBoundModel<Product>) {
-    return `Product: ${this.name}`;
-  }
-
 }
-
-
-
 
 Product.fields = {
   id: attr(),
