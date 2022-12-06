@@ -35,35 +35,38 @@ const Main: FC<MainProps> = ({}) => {
   });
 
   useEffect(() => {
-    let params = selectedCategory
-      ? {
-          filter: `{"category_id":${selectedCategory}}`,
-          range: `[0, ${limit - 1}]`,
-        }
-      : { range: `[0, ${limit - 1}]` };
-    isFetch(params);
-  }, []);
+    if (productsCount === 0) {
+      let params = {
+        filter: `{"category_id":${selectedCategory}}`,
+        range: `[0, ${limit - 1}]`,
+      };
+
+      isFetch(params);
+    }
+  }, [selectedCategory]);
 
   const showMoreFunc = () => {
-    const params = selectedCategory
-      ? {
-          filter: `{"category_id":${selectedCategory}}`,
-          range: `[${productsCount},${limit - 1}]`,
-        }
-      : { range: `[${productsCount},${productsCount + (limit - 1)}]` };
+    const params = {
+      filter: `{"category_id":${selectedCategory}}`,
+      range: `[${productsCount},${productsCount + (limit - 1)}]`,
+    };
     isFetch(params);
   };
 
   return (
     <div className={s.main}>
       {!error ? (
-        <List
-          //@ts-ignore
-          items={products}
-          renderItem={(productCard: IProduct) => (
-            <ProductCard productCard={productCard} key={productCard.id} />
-          )}
-        />
+        selectedCategory ? (
+          <List
+            //@ts-ignore
+            items={products}
+            renderItem={(productCard: IProduct) => (
+              <ProductCard productCard={productCard} key={productCard.id} />
+            )}
+          />
+        ) : (
+          "Категории не были загружены"
+        )
       ) : (
         "Ошибка загрузки данных"
       )}

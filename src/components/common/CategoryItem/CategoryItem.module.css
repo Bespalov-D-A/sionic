@@ -11,5 +11,10 @@
 	font-feature-settings: "pnum" on, "lnum" on;
 	border-radius: 40px;
 	color: #ffffff;
-	background: tomato;
+	background: mediumpurple;
+}
+
+.category:hover {
+	background: mediumorchid;
+	cursor:pointer;
 }

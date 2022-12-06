@@ -8,7 +8,7 @@ export const getProductsByCategoryId = createSelector(
   //@ts-ignore
   (session, selectedCategory) => {
       if(!selectedCategory) return session.Product.all().toRefArray()
-      return session.Product.withId(selectedCategory).products.toRefArray();
+    return session.Product.filter({category_id: selectedCategory}).toRefArray();
   }
 )
 
@@ -19,6 +19,7 @@ export const getProductsLengthByCategoryId = createSelector(
   //@ts-ignore
   (session, selectedCategory) => {
     if(!selectedCategory) return session.Product.count()
-    return session.Product.withId(selectedCategory).count()
+    return session.Product.filter({category_id: selectedCategory}).count();
+
   }
 )

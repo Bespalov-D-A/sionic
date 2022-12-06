@@ -15,12 +15,12 @@ export const commonSlice = createSlice({
   name: 'common',
   initialState,
   reducers: {
-    setSelectedCateagory: (state,action: PayloadAction<number> ) => {
+    setSelectedCategory: (state,action: PayloadAction<number> ) => {
       state.selectedCategory = action.payload
     }
   },
 })
 
-export const {setSelectedCateagory} = commonSlice.actions
+export const {setSelectedCategory} = commonSlice.actions
 
 export default commonSlice.reducer

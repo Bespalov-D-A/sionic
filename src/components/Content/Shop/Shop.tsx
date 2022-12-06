@@ -9,11 +9,13 @@ import { variationService } from "../../../API/variationService";
 import { ADD_PRODUCT_VARIATION_PROPERTY } from "../../../store/models/VariationProperty/VariationProperty";
 import { ADD_PRODUCT_VARIATION_PROP_LIST_VALUES } from "../../../store/models/VariationPropertyListValues/VariationPropertyListValues";
 import {useAppDispatch} from "../../../hooks/useAppDispatch";
+import {useAppSelector} from "../../../hooks/useAppSelector";
 
 interface ShopProps {}
 
 const Shop: FC<ShopProps> = ({}) => {
   const dispatch = useAppDispatch()
+  const selectedCat = useAppSelector(state => state.commonSlice.selectedCategory)
   const [isFetch, isLoad, error]: any = useLoader(async (params: params) => {
     //@ts-ignore
     Promise.all([
@@ -39,7 +41,7 @@ const Shop: FC<ShopProps> = ({}) => {
     <div className={s.shop}>
       <Top />
       <Categories />
-      {isLoad ? 'LOADING' : <Main />}
+      {isLoad ? 'LOADING' : !selectedCat || <Main />}
     </div>
   );
 };
