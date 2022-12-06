@@ -1,4 +1,4 @@
-import  { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Price from "./Price/Price";
 import s from "./ProductCard.module.css";
 import Btn from "./Btn/Btn";
@@ -16,6 +16,7 @@ import { variationService } from "../../../API/variationService";
 import { useAppSelector } from "../../../hooks/useAppSelector";
 import Variations from "./Variations/Variations";
 import Properties from "./Properties/Properties";
+import { useCart } from "react-use-cart";
 
 interface ProductCardProps {
   productCard: IProduct;
@@ -32,7 +33,8 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
     setSelectedVariation(response.data[0]);
     dispatch({ type: ADD_PRODUCT_VARIATION_PACK, payload: response.data });
   });
-
+  const { addItem } = useCart();
+  const  ggg  = useCart();
   const [cover, setCover] = useState<string>("");
 
   useEffect(() => {
@@ -47,6 +49,16 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
       "https://test2.sionic.ru/api/ProductImages/" + productCard.id
     );
     setCover("https://test2.sionic.ru/" + resp.data.image_url);
+  };
+  const addCartFunc = () => {
+    addItem(
+      {
+        ...productCard,
+        id: String(productCard.id),
+        selected_variation_id: selectedVariation!.id,
+        price: selectedVariation!.price,
+      }, 1
+    );
   };
 
   return (
@@ -69,8 +81,8 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
         <p className={s.title}>{productCard.name}</p>
         <Properties selectedVariation={selectedVariation} />
       </div>
-      <Price price={selectedVariation?.price}/>
-      <Btn />
+      <Price price={selectedVariation?.price} />
+      <Btn addCart={addCartFunc} />
     </div>
   );
 };
