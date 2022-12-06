@@ -8,7 +8,7 @@
 
 .flickity-prev-next-button {
   position: absolute;
-  top: 0;
+  top: 4px;
   border: none;
   width: 20px;
   height: 24px;

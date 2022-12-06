@@ -1,14 +1,15 @@
 import {FC} from "react"
+import {IProductVariation} from "../../../types/productTypes"
 import s from './VariationItem.module.css'
 
 interface VariationItemI {
-  price: number,
-    id: number,
+  variation: IProductVariation,
 setSelectedVariation: any
 }
 
-const VariationItem: FC<VariationItemI> = ({price, id, setSelectedVariation}) => {
-  return <div className={s.price} onClick={()=>setSelectedVariation(id)}>{price}</div>
+const VariationItem: FC<VariationItemI> = ({variation, setSelectedVariation}) => {
+  const {price} = variation
+  return <div className={s.price} onClick={()=>setSelectedVariation(variation)}>{price}</div>
 }
 
 export default VariationItem

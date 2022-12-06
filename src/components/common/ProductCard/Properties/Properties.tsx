@@ -6,13 +6,13 @@ import {useLoader} from "../../../../hooks/useLoader"
 import {getAllVariationProperties} from "../../../../selectors/variationSelector"
 import {ADD_PRODUCT_VARIATION_PROPERTY_VALUE} from "../../../../store/models/VariationPropertyValues/VariationPropertyValues"
 import {params} from "../../../../types/apiTypes"
-import {IProductVariationProperties} from "../../../../types/productTypes"
+import {IProductVariation, IProductVariationProperties} from "../../../../types/productTypes"
 import List from "../../List"
 import PropertyItem from "../PropertyItem/PropertyItem"
 import s from './Properties.module.css'
 
 interface PropertiesI {
-  selectedVariation: number | null
+  selectedVariation: IProductVariation | null
 }
 
 const Properties: FC<PropertiesI> = ({selectedVariation}) => {
@@ -28,7 +28,7 @@ const Properties: FC<PropertiesI> = ({selectedVariation}) => {
   useEffect(()=> {
     if(selectedVariation)
     isFetch({
-      filter: `{"product_variation_id":${selectedVariation}}`
+      filter: `{"product_variation_id":${selectedVariation.id}}`
     })
   }, [selectedVariation])
 

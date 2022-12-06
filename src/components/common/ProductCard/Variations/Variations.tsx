@@ -1,4 +1,6 @@
 import { FC, useEffect, useRef } from "react";
+
+
 import Flickity from "react-flickity-component";
 import { useVariation } from "../../../../hooks/useVariation";
 import { IProductVariation } from "../../../../types/productTypes";
@@ -8,7 +10,7 @@ import s from "./Variations.module.css";
 interface VariationsI {
   productId: number;
   setSelectedVariation: any;
-  selectedVariation: number | null;
+  selectedVariation: IProductVariation | null;
 }
 
 const Variations: FC<VariationsI> = ({
@@ -27,7 +29,7 @@ const Variations: FC<VariationsI> = ({
   };
 
   const setVariation = (index:number) => {
-        setSelectedVariation(variations[index].id);
+        setSelectedVariation(variations[index]);
   }
 
   useEffect(()=> {
@@ -38,8 +40,7 @@ const Variations: FC<VariationsI> = ({
   const remapVariations = () => {
     return variations.map((variation: IProductVariation) => (
       <VariationItem
-        price={variation.price}
-        id={variation.id}
+        variation={variation}
         setSelectedVariation={setSelectedVariation}
         key={variation.id}
       />
@@ -47,18 +48,11 @@ const Variations: FC<VariationsI> = ({
   };
 
   const selectVariationFunc = (value: string) => {
-    let ind = variations.findIndex(
-      (item: IProductVariation) => item.id === selectedVariation
-    );
     switch (value) {
       case "next":
-        //if (variations[variations.length - 1].id === selectedVariation) break;
-        //setSelectedVariation(variations[ind + 1].id);
         flkty.current.next();
         break;
       case "prev":
-        //if (variations[0].id === selectedVariation) break;
-        //setSelectedVariation(variations[ind - 1].id);
         flkty.current.previous();
         break;
       default:

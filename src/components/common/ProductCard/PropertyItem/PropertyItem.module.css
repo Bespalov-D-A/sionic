@@ -1,0 +1,7 @@
+.property {
+	display: flex;
+	justify-content: space-between;
+	height: 16px;
+	font-size: 12px;
+	line-height: 16px;
+}

@@ -1,11 +1,13 @@
 import {FC, useMemo} from "react"
 import {useGetPropertyValue} from "../../../../hooks/useGetPropertyValue"
 import {useListValue} from "../../../../hooks/useListValue"
+import {IProductVariation} from "../../../../types/productTypes"
+import s from './PropertyItem.module.css'
 
 interface PropertyItemI {
   title: string,
   id: number,
-  selectedVariation: number | null
+  selectedVariation: IProductVariation | null
 }
 
 const PropertyItem: FC<PropertyItemI> = ({id, title, selectedVariation}) => {
@@ -24,11 +26,13 @@ const PropertyItem: FC<PropertyItemI> = ({id, title, selectedVariation}) => {
       case 5: return value.value_float
       case 6: return listValue ? listValue.title : 'error' 
       case 7: return listValue ? listValue.title : 'error' 
-      default: return 'Unknown erro'
+      default: return 'Unknown error'
     }
   }, [listValue, value])
 
-  return <div>{title} : {getVal}</div>
+  return <div className={s.property}>
+    <p>{title}</p> <p>{getVal}</p>
+  </div>
 }
 
 export default PropertyItem

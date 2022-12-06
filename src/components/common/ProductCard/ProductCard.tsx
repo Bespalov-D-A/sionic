@@ -1,15 +1,19 @@
-import React, { FC, useEffect, useState } from "react";
+import  { FC, useEffect, useState } from "react";
 import Price from "./Price/Price";
 import s from "./ProductCard.module.css";
 import Btn from "./Btn/Btn";
 import axios from "axios";
-import { IProduct, IProductCover } from "../../../types/productTypes";
+import {
+  IProduct,
+  IProductCover,
+  IProductVariation,
+} from "../../../types/productTypes";
 import { useLoader } from "../../../hooks/useLoader";
 import { params } from "../../../types/apiTypes";
 import { useAppDispatch } from "../../../hooks/useAppDispatch";
 import { ADD_PRODUCT_VARIATION_PACK } from "../../../store/models/ProductVariation/ProductVariation";
 import { variationService } from "../../../API/variationService";
-import {useAppSelector} from "../../../hooks/useAppSelector";
+import { useAppSelector } from "../../../hooks/useAppSelector";
 import Variations from "./Variations/Variations";
 import Properties from "./Properties/Properties";
 
@@ -18,22 +22,23 @@ interface ProductCardProps {
 }
 
 const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
-  const {id} = productCard
-  const [selectedVariation, setSelectedVariation] = useState<number | null>(null)
+  const { id } = productCard;
+  const [selectedVariation, setSelectedVariation] =
+    useState<IProductVariation | null>(null);
   const dispatch = useAppDispatch();
-  const state = useAppSelector(state => state)
+  const state = useAppSelector((state) => state);
   const [isFetch, isLoad, error]: any = useLoader(async (params: params) => {
     const response = await variationService.getProductVariation(params);
-    setSelectedVariation(response.data[0].id)
+    setSelectedVariation(response.data[0]);
     dispatch({ type: ADD_PRODUCT_VARIATION_PACK, payload: response.data });
   });
 
   const [cover, setCover] = useState<string>("");
 
   useEffect(() => {
-    getCover()
+    getCover();
     isFetch({
-      filter: `{"product_id":${id}}`
+      filter: `{"product_id":${id}}`,
     });
   }, []);
 
@@ -56,11 +61,15 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
         )}
       </div>
       <div className={s["title-block"]}>
-            <Variations selectedVariation={selectedVariation} setSelectedVariation={setSelectedVariation} productId={id}/>
+        <Variations
+          selectedVariation={selectedVariation}
+          setSelectedVariation={setSelectedVariation}
+          productId={id}
+        />
         <p className={s.title}>{productCard.name}</p>
-        <Properties selectedVariation={selectedVariation}/>
+        <Properties selectedVariation={selectedVariation} />
       </div>
-      <Price />
+      <Price price={selectedVariation?.price}/>
       <Btn />
     </div>
   );

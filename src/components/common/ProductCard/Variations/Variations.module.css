@@ -1,5 +1,6 @@
 .variations {
 	position: relative;
+	min-height: 30px;
 }
 
 .list {
