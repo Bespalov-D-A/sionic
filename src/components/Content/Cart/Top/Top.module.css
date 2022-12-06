@@ -23,6 +23,12 @@ line-height: 19px;
 font-feature-settings: 'pnum' on, 'lnum' on;
 }
 
-.link {
+.clear__item {
 color: var(--color-dark-pink);
 }
+
+.clear__item:hover {
+	cursor: pointer;
+}
+
+

@@ -5,12 +5,12 @@ import s from "./CartBtn.module.css";
 interface CartBtnProps {}
 
 const CartBtn: FC<CartBtnProps> = ({}) => {
-  const  { totalItems }  =  useCart() ;
+  const  { totalUniqueItems }  =  useCart() ;
 
   return (
     <div className={s["cart-btn"]}>
       <div className={s.count}>
-        <p className={s['count-item']}>{totalItems}+</p>
+        <p className={s['count-item']}>{totalUniqueItems}+</p>
       </div>
     </div>
   );

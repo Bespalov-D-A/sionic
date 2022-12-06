@@ -1,12 +1,14 @@
-import React, { FC } from "react";
+import  { FC } from "react";
 import s from "./Price.module.css";
 
-interface PriceProps {}
+interface PriceProps {
+  price: number
+}
 
-const Price: FC<PriceProps> = ({}) => {
+const Price: FC<PriceProps> = ({price}) => {
   return (
     <div className={s.price}>
-      <p className={s.current}>от 350 000 ₽</p>
+      <p className={s.current}>{price} ₽</p>
       <p className={s.discount}>450 500 ₽</p>
     </div>
   );

@@ -2,11 +2,14 @@ import React, {FC} from 'react'
 import StatusBar from './StatusBar/StatusBar'
 import s from './Info.module.css'
 
-interface InfoProps {}
+interface InfoI {
+  info: string,
+    name: string
+}
 
-const Info: FC<InfoProps> = ({}) => {
+const Info: FC<InfoI> = ({name, info}) => {
   return <div className={s.info}>
-  <p>Смартфон Xiaomi Redmi Note 8 Pro 6/128GB, белый</p>
+  <p>{name}</p>
   <StatusBar />
   </div>
 }
