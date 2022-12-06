@@ -1,0 +1,14 @@
+.show-more-btn {
+width: 292px;
+height: 50px;
+margin: 0 auto;
+background: #F0F4FB;
+border: none;
+outline: none;
+border-radius: 51px;
+}
+
+.wrap {
+	flex: 1 0 100%;
+	text-align: center;
+}

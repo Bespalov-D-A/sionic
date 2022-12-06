@@ -8,7 +8,7 @@ export interface commonState {
 
 const initialState: commonState = {
   selectedCategory: null,
-  limit: 10
+  limit: 12
 }
 
 export const commonSlice = createSlice({

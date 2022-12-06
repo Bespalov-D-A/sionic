@@ -11,3 +11,14 @@ export const getProductsByCategoryId = createSelector(
       return session.Product.withId(selectedCategory).products.toRefArray();
   }
 )
+
+export const getProductsLengthByCategoryId = createSelector(
+  orm,
+  //@ts-ignore
+  state => state.commonSlice.selectedCategory,
+  //@ts-ignore
+  (session, selectedCategory) => {
+    if(!selectedCategory) return session.Product.count()
+    return session.Product.withId(selectedCategory).count()
+  }
+)

@@ -3,12 +3,16 @@ import { productService } from "../../../../API/productService";
 import { useAppDispatch } from "../../../../hooks/useAppDispatch";
 import { useAppSelector } from "../../../../hooks/useAppSelector";
 import { useLoader } from "../../../../hooks/useLoader";
-import { getProductsByCategoryId } from "../../../../selectors/productSelector";
+import {
+  getProductsByCategoryId,
+  getProductsLengthByCategoryId,
+} from "../../../../selectors/productSelector";
 import { ADD_PRODUCTS_PACK } from "../../../../store/models/Product/Product";
-import {params} from "../../../../types/apiTypes";
+import { params } from "../../../../types/apiTypes";
 import { IProduct } from "../../../../types/productTypes";
 import List from "../../../common/List";
 import ProductCard from "../../../common/ProductCard/ProductCard";
+import ShowMoreBtn from "../../../common/ShowMoreBtn/ShowMoreBtn";
 import s from "./Main.module.css";
 
 interface MainProps {}
@@ -16,8 +20,14 @@ interface MainProps {}
 const Main: FC<MainProps> = ({}) => {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state);
-  const limit:number = useAppSelector(state => state.commonSlice.limit)
+  const limit: number = useAppSelector((state) => state.commonSlice.limit);
+  //@ts-ignore
+  const productsCount: number = getProductsLengthByCategoryId(state);
+  const selectedCategory: number | null = useAppSelector(
+    (state) => state.commonSlice.selectedCategory
+  );
   const products = getProductsByCategoryId(state);
+  //const productsCountInCat =
   const [isFetch, isLoad, error]: any = useLoader(async (params: params) => {
     //@ts-ignore
     const response = await productService.getProducts(params);
@@ -25,24 +35,39 @@ const Main: FC<MainProps> = ({}) => {
   });
 
   useEffect(() => {
-    isFetch({
-      filter: `{"category_id":${3}}`,
-      range: `[0, ${limit}]`
-    });
+    let params = selectedCategory
+      ? {
+          filter: `{"category_id":${selectedCategory}}`,
+          range: `[0, ${limit - 1}]`,
+        }
+      : { range: `[0, ${limit - 1}]` };
+    isFetch(params);
   }, []);
 
+  const showMoreFunc = () => {
+    const params = selectedCategory
+      ? {
+          filter: `{"category_id":${selectedCategory}}`,
+          range: `[${productsCount},${limit - 1}]`,
+        }
+      : { range: `[${productsCount},${productsCount + (limit - 1)}]` };
+    isFetch(params);
+  };
 
   return (
     <div className={s.main}>
-      {isLoad ? 'LOADING!!!!' :
-      !error ?
-      <List
-        //@ts-ignore
-        items={products}
-        renderItem={(productCard: IProduct) => (
-          <ProductCard productCard={productCard} key={productCard.id} />
-        )}
-      /> : 'Ошибка загрузки данных'}
+      {!error ? (
+        <List
+          //@ts-ignore
+          items={products}
+          renderItem={(productCard: IProduct) => (
+            <ProductCard productCard={productCard} key={productCard.id} />
+          )}
+        />
+      ) : (
+        "Ошибка загрузки данных"
+      )}
+      {(error && !products) || <ShowMoreBtn showMoreFunc={showMoreFunc} />}
     </div>
   );
 };
