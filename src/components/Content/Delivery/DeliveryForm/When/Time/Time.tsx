@@ -49,7 +49,9 @@ const Time: FC<TimeProps> = (props) => {
         : state.isSelected
         ? "#2983FB"
         : "#fff",
+      cursor: state.isFocused ? 'pointer' : 'arrow'
     }),
+    singleValue: (styles ) => ({...styles, color: '#727280'})
   };
 
   const themeFunc = (theme: any) => ({
