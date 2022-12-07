@@ -1,12 +1,14 @@
 import React, { FC } from "react";
 import s from "./Address.module.css";
 
-interface AddressProps {}
+interface AddressProps {
+  field: any
+}
 
-const Address: FC<AddressProps> = ({}) => {
+const Address: FC<AddressProps> = ({field}) => {
   return (
     <div className={s.address}>
-      <input type="text" className={s["input-field"]} />
+      <input {...field} type="text" className={s["input-field"]} />
       <span className={s.placeholder}>Выберите адрес доставки</span>
     </div>
   );

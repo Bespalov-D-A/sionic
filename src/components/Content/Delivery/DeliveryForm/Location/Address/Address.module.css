@@ -41,5 +41,5 @@
 	line-height: 140%;
 	font-feature-settings: "pnum" on, "lnum" on;
 	color: var(--color-gray);
-	z-index: 1;
+	z-index: 0;
 }

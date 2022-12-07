@@ -1,6 +1,7 @@
-@import './../../../../../../css/index.css';
+@import './../../../../../../../css/index.css';
 
-.time {
+.date {
+	margin-right: 20px;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 140%;

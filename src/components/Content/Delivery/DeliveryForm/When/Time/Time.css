@@ -1,0 +1,31 @@
+.select__value-container {
+	display: inline !important;
+	padding: 0 !important;
+	border: 0 !important;
+}
+
+.select__value-container > #react-select-2-input {
+	position: absolute;
+	left: auto;
+}
+
+.select__single-value {
+	min-width: 80px;
+}
+
+.select__control {
+	display: inline !important;
+	min-width: auto !important;
+	min-height: auto !important;
+	height: 120px !important;
+	border: 0 !important;
+}
+
+.select__control:hover {
+	cursor: pointer;
+}
+.select__indicators {
+	display: none !important;
+}
+
+
