@@ -17,6 +17,7 @@ const Location: FC<LocationProps> = (props) => {
   };
 
   const newOnChangeFunc = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e)
     field.onChange(e);
     setAddress(e.target.value);
   };

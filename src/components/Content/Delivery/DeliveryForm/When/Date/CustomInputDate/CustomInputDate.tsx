@@ -8,7 +8,7 @@ interface CustomInputDateI {
 
 const CustomInputDate: FC<CustomInputDateI> = forwardRef(({value, onClick}, ref: React.ForwardedRef<HTMLSpanElement>) => {
   return <div className={s.date}>
-    <span ref={ref} onClick={onClick} >{value}</span>
+    <span ref={ref} onClick={onClick} >{value ? value : 'Выберите дату'}</span>
 </div>
 })
 

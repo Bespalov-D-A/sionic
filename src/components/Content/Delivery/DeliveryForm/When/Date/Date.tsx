@@ -25,8 +25,8 @@ const DateField: FC<DateFieldI> = () => {
       customInput={<CustomInputDate />}
       locale="ru"
       placeholderText="Выберите дату"
-      dateFormat="dd/MM/yyyy"
-      selected={selectedDate ? new Date(selectedDate) : new Date()}
+      dateFormat="dd.MM.yyyy"
+      selected={selectedDate ? new Date(selectedDate) : undefined}
       onChange={(date: Date) => setDate(date)}
     />
 </div>

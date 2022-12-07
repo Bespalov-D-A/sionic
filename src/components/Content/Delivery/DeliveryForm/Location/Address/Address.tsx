@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import s from "./Address.module.css";
 
 interface AddressProps {
@@ -6,15 +6,24 @@ interface AddressProps {
 }
 
 const Address: FC<AddressProps> = ({ field }) => {
-  const [isFocus, setIsFocus] = useState(false);
+  const [isFocus, setIsFocus] = useState(field.value === '' ? false : true);
+
+  useEffect(()=> {
+    if(field.value === '')
+      setIsFocus(false)
+    else setIsFocus(true)
+  }, [field.value])
 
   const handleFunc = (e: any) => {
+    const value = e.target.value
     const newType: "focus" | "blur" = e.type;
     switch (newType) {
       case "focus":
+        if(value === '')
         setIsFocus(true);
         break;
       case "blur":
+      if(value === '')
         setIsFocus(false);
         break;
     }

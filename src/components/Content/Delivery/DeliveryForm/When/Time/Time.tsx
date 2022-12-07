@@ -69,7 +69,7 @@ const Time: FC<TimeProps> = (props) => {
         onChange={onChange}
         classNamePrefix="select"
         name={name}
-        placeholder="Выберите дату"
+        placeholder="Выберите время"
         value={field.value}
         theme={themeFunc}
         //@ts-ignore
