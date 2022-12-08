@@ -1,7 +1,10 @@
-import { FC, useRef } from "react";
+import { FC } from "react";
 import DatePicker from "react-datepicker";
 import { useAppDispatch } from "../../../../../../hooks/useAppDispatch";
-import { updateDate } from "../../../../../../store/slices/deliveryFormSlice";
+import {
+  updateDate,
+  updateTime,
+} from "../../../../../../store/slices/deliveryFormSlice";
 import { useAppSelector } from "../../../../../../hooks/useAppSelector";
 import { registerLocale } from "react-datepicker";
 import s from "./Date.module.css";
@@ -9,10 +12,11 @@ import ru from "date-fns/locale/ru";
 import CustomInputDate from "./CustomInputDate/CustomInputDate";
 import { useField, useFormikContext } from "formik";
 import InputErrMsg from "../../../../../common/InputErrMsg/InputErrMsg";
+import { DateAndTimeNames } from "../../../../../../types/types";
 registerLocale("ru", ru);
 
 interface DateFieldI {
-  name: string;
+  name: DateAndTimeNames;
 }
 
 const DateField: FC<DateFieldI> = (props) => {
@@ -26,14 +30,24 @@ const DateField: FC<DateFieldI> = (props) => {
   };
 
   const handlerChange = (date: Date) => {
-    setFieldValue("date", date);
+    if (field.value) {
+      setFieldValue("time", null);
+      updateTime(null);
+    }
+    setFieldValue(props.name, date);
     setDate(date);
   };
 
   return (
     <div className={s["date-pick"]}>
       <DatePicker
-        customInput={<CustomInputDate placeholder='Выберите дату' name={props.name} field={field} />}
+        customInput={
+          <CustomInputDate
+            placeholder="Выберите дату"
+            nameInput={props.name}
+            field={field}
+          />
+        }
         locale="ru"
         minDate={new Date()}
         placeholderText="Выберите дату"

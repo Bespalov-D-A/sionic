@@ -11,7 +11,7 @@ export interface deliveryFormState {
   phone: string;
   address: string;
   date: string | null,
-    time: string | null
+  time: string | null
 }
 
 const initialState: deliveryFormState = {
@@ -39,14 +39,20 @@ export const deliveryFormSlice = createSlice({
     updateAddress: (state, action: PayloadAction<string>) => {
       state.address = action.payload;
     },
-    updateTime: (state, action: PayloadAction<string>) => {
+    updateTime: (state, action: PayloadAction<string | null>) => {
       state.time = action.payload;
     },
-
+    clearForm: (state) => {
+      state.address = ''
+      state.date = null
+      state.name = ''
+      state.phone = ''
+      state.time = null
+    }
   },
 });
 
-export const { updateDate, updateTime, updatePhone, updateAddress, updateName } =
+export const { updateDate, clearForm, updateTime, updatePhone, updateAddress, updateName } =
   deliveryFormSlice.actions;
 
 export default deliveryFormSlice.reducer;

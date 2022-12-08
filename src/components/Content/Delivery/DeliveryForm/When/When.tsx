@@ -2,10 +2,11 @@ import { FC } from "react";
 import s from "./When.module.css";
 import TimeField from "./Time/Time";
 import DateField from "./Date/Date";
+import {DateAndTimeNames} from "../../../../../types/types";
 
 interface WhenProps {
-  nameTime: string,
-  nameDate: string
+  nameTime: DateAndTimeNames,
+  nameDate: DateAndTimeNames
 }
 
 const When: FC<WhenProps> = ({nameTime, nameDate}) => {

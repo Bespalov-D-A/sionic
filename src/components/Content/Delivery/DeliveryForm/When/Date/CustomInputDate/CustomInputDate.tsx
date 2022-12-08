@@ -1,26 +1,40 @@
 import { FC, forwardRef, useEffect } from "react";
+import { format } from "date-fns";
 import s from "./CustomInputDate.module.css";
+import { DateAndTimeNames } from "../../../../../../../types/types";
+import {useAppSelector} from "../../../../../../../hooks/useAppSelector";
 
 interface CustomInputDateI {
   value?: string;
   onClick?: () => void;
   field: any;
-  name: string,
-  placeholder:string
+  readonly nameInput: DateAndTimeNames;
+  placeholder: string;
 }
 
 const CustomInputDate: FC<CustomInputDateI> = forwardRef(
-  ({ field, value, onClick, placeholder, name }, ref: React.ForwardedRef<HTMLSpanElement>) => {
+  (props, ref: React.ForwardedRef<HTMLSpanElement>) => {
+    const { field, value, onClick, placeholder, nameInput } = props;
+
+      const dateValue = useAppSelector(state => state.deliveryFormSlice.date)
+    const getValue = (name: DateAndTimeNames) => {
+      return format(
+        new Date(field.value),
+        name === "time" ? "hh:mm" : "dd.MM.yyyy"
+      );
+    };
+
+
     return (
       <div className={s.date}>
         <span
           id={field.name}
-          onMouseDown={(e) => field.onBlur({ ...e, type: "blur" })}
+          onMouseUp={(e)=>field.onBlur({ ...e, type: "blur" })}
           className={s.date}
           ref={ref}
-          onClick={onClick}
+          onClick={!dateValue && nameInput === 'time' ? ()=>{} : onClick}
         >
-          {value ? value : placeholder}
+          {field.value ? getValue(nameInput) : placeholder}
         </span>
       </div>
     );

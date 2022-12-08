@@ -17,6 +17,7 @@ import { useAppSelector } from "../../../hooks/useAppSelector";
 import Variations from "./Variations/Variations";
 import Properties from "./Properties/Properties";
 import { useCart } from "react-use-cart";
+import { IProductInCart } from "../../../types/orderTypes";
 
 interface ProductCardProps {
   productCard: IProduct;
@@ -33,7 +34,7 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
     setSelectedVariation(response.data[0]);
     dispatch({ type: ADD_PRODUCT_VARIATION_PACK, payload: response.data });
   });
-  const {items, getItem, addItem } = useCart();
+  const { items, getItem, addItem } = useCart();
   const [cover, setCover] = useState<string>("");
 
   useEffect(() => {
@@ -50,21 +51,19 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
     setCover("https://test2.sionic.ru/" + resp.data.image_url);
   };
   const addCartFunc = () => {
-    const prodId = productCard.id + '#cat:' + selectedVariation!.id
-    const newProduct = getItem(prodId)
-    if(newProduct) { 
-      alert('Уже в корзине')
-    } else
-    addItem(
-      {
-        ...productCard,
-        id: prodId,
-        original_product_id: productCard.id,
-        selected_variation_id: selectedVariation!.id,
-        price: selectedVariation!.price,
-        cover
-      }, 1
-    );
+    const prodId = productCard.id + "#cat:" + selectedVariation!.id;
+    const newProduct = getItem(prodId);
+    const productInCart: IProductInCart = {
+      ...productCard,
+      id: prodId,
+      original_product_id: productCard.id,
+      selected_variation_id: selectedVariation!.id,
+      price: selectedVariation!.price,
+      cover,
+    };
+    if (newProduct) {
+      alert("Уже в корзине");
+    } else addItem(productInCart);
   };
 
   return (

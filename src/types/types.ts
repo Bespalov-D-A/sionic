@@ -1,3 +1,4 @@
+export type DateAndTimeNames = 'time' | 'date'
 
 export interface Icollection {
   id: number;
