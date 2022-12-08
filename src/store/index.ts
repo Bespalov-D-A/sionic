@@ -10,6 +10,9 @@ import deliveryFormSlice, {
   deliveryFormState,
 } from "./slices/deliveryFormSlice";
 import thunk from "redux-thunk";
+import orderHistorySlice, {
+  orderHistoryState,
+} from "./slices/orderHistorySlice";
 
 export const ormReducer = createReducer(orm);
 
@@ -20,13 +23,16 @@ const persistConfig = {
   stateReconciler: autoMergeLevel2,
 };
 
-
 export const store = configureStore({
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: process.env.NODE_ENV !== "production",
   reducer: {
     deliveryFormSlice: persistReducer<deliveryFormState, any>(
       persistConfig,
       deliveryFormSlice
+    ),
+    orderHistorySlice: persistReducer<orderHistoryState, any>(
+      persistConfig,
+      orderHistorySlice
     ),
     ormReducer,
     commonSlice,

@@ -1,6 +1,7 @@
 @import './../../../../../../css/index.css';
 
 .time {
+	position: relative;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 140%;

@@ -4,16 +4,17 @@ import Time from "./Time/Time";
 import DateField from "./Date/Date";
 
 interface WhenProps {
-  name: string
+  nameTime: string,
+  nameDate: string
 }
 
-const When: FC<WhenProps> = ({name}) => {
+const When: FC<WhenProps> = ({nameTime, nameDate}) => {
   return (
     <div className={s.when}>
       <h4 className={s.title}>Когда доставить?</h4>
       <div className={s["date-time"]}>
-        <DateField />
-        <Time name={name} />
+        <DateField name={nameDate}/>
+        <Time name={nameTime} />
       </div>
     </div>
   );

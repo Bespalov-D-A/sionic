@@ -17,17 +17,15 @@ const Location: FC<LocationProps> = (props) => {
   };
 
   const newOnChangeFunc = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e)
     field.onChange(e);
     setAddress(e.target.value);
   };
 
   const newField = { ...field, onChange: newOnChangeFunc };
 
-
   return <div className={s.location}>
     <h4 className={s.title}>Куда доставить?</h4>
-    <Address field={newField} />
+    <Address meta={meta} field={newField} />
   </div>;
 };
 

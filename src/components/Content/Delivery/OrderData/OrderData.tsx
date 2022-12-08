@@ -1,12 +1,15 @@
-import React, { FC, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { FC, useState } from "react";
 import { useCart } from "react-use-cart";
 import { numFormat } from "../../../../utilites/formatNumbers";
+import {IDeliveryFormError} from "../../../../validators/deliveryFormValidate";
 import s from "./OrderData.module.css";
 
-interface OrederDataProps {}
+interface OrederDataProps {
+  createOrder: ()=>void,
+    errors: IDeliveryFormError
+}
 
-const OrederData: FC<OrederDataProps> = ({}) => {
+const OrederData: FC<OrederDataProps> = ({errors, createOrder}) => {
   const { cartTotal } = useCart();
   const [delivery, setDelivery] = useState(200584);
 
@@ -28,9 +31,10 @@ const OrederData: FC<OrederDataProps> = ({}) => {
           <span className={s.num}>{numFormat(delivery + cartTotal)}₽</span>
         </p>
       </div>
-      <NavLink to="/shop" className={s.btn + " blue-btn"}>
+      <button type='submit' className={s.btn + " blue-btn"}>
         Сделать заказ
-      </NavLink>
+      </button>
+    {!Object.keys(errors).length || 'Форма доставки заолнена не верно' }
     </div>
   );
 };

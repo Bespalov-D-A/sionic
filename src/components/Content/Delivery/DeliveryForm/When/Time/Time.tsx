@@ -1,5 +1,5 @@
 import { useField } from "formik";
-import { FC, useRef } from "react";
+import { FC } from "react";
 import Select, { ActionMeta, StylesConfig } from "react-select";
 import { useAppDispatch } from "../../../../../../hooks/useAppDispatch";
 import {
@@ -8,6 +8,7 @@ import {
 } from "../../../../../../store/slices/deliveryFormSlice";
 import s from "./Time.module.css";
 import "./Time.css";
+import InputErrMsg from "../../../../../common/InputErrMsg/InputErrMsg";
 
 interface TimeProps {
   name: string;
@@ -51,7 +52,7 @@ const Time: FC<TimeProps> = (props) => {
         : "#fff",
       cursor: state.isFocused ? 'pointer' : 'arrow'
     }),
-    singleValue: (styles ) => ({...styles, color: '#727280'})
+    singleValue: (styles ) => ({...styles, color: '#727280'}),
   };
 
   const themeFunc = (theme: any) => ({
@@ -76,6 +77,7 @@ const Time: FC<TimeProps> = (props) => {
         styles={colourStyles}
         options={timeOptions}
       />
+      <InputErrMsg style={{top: '18px'}} msg={meta.error} touched={meta.touched}/>
     </div>
   );
 };

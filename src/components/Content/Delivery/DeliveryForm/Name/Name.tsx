@@ -2,6 +2,7 @@ import { useField } from "formik";
 import React, { FC } from "react";
 import { useAppDispatch } from "../../../../../hooks/useAppDispatch";
 import { updateName } from "../../../../../store/slices/deliveryFormSlice";
+import InputErrMsg from "../../../../common/InputErrMsg/InputErrMsg";
 import s from "./Name.module.css";
 
 interface NameI {
@@ -16,6 +17,7 @@ const Name: FC<NameI> = (props) => {
   };
 
   const newOnChangeFunc = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(meta);
     field.onChange(e);
     setName(e.target.value);
   };
@@ -26,8 +28,13 @@ const Name: FC<NameI> = (props) => {
     <div className={s.name}>
       <h4 className={s.title}>Имя</h4>
       <div className={s["name-input-block"]}>
-        <input {...newField} type="text" className={s["name-input"]} />
-      </div>
+        <input
+          {...newField}
+          type="text"
+          className={s["name-input"]}
+        />
+        <InputErrMsg touched={meta.touched} msg={meta.error}/>
+              </div>
     </div>
   );
 };

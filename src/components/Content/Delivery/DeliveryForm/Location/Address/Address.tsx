@@ -1,11 +1,13 @@
 import React, { FC, useEffect, useState } from "react";
+import InputErrMsg from "../../../../../common/InputErrMsg/InputErrMsg";
 import s from "./Address.module.css";
 
 interface AddressProps {
   field: any;
+  meta: any
 }
 
-const Address: FC<AddressProps> = ({ field }) => {
+const Address: FC<AddressProps> = ({ meta, field }) => {
   const [isFocus, setIsFocus] = useState(field.value === '' ? false : true);
 
   useEffect(()=> {
@@ -15,6 +17,7 @@ const Address: FC<AddressProps> = ({ field }) => {
   }, [field.value])
 
   const handleFunc = (e: any) => {
+    field.onBlur(e)
     const value = e.target.value
     const newType: "focus" | "blur" = e.type;
     switch (newType) {
@@ -36,6 +39,7 @@ const Address: FC<AddressProps> = ({ field }) => {
       <span className={s.placeholder + " " + (isFocus ? s["inFocus"] : "")}>
         Выберите адрес доставки
       </span>
+        <InputErrMsg msg={meta.error} touched={meta.touched}/>
     </div>
   );
 };
