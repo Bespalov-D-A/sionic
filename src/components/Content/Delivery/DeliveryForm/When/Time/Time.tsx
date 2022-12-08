@@ -64,7 +64,7 @@ const TimeField: FC<TimeFieldI> = (props) => {
         withPortal
       />
       <InputErrMsg
-        style={{ top: "18px", left: "10px" }}
+        style={{ top: "18px", left: !selectedDate ? '-4px' :"10px" }}
         msg={!selectedDate ? "Сначала выберите дату" : meta.error}
         touched={meta.touched}
       />
