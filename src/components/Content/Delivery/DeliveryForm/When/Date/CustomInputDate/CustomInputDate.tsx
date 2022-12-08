@@ -5,20 +5,22 @@ interface CustomInputDateI {
   value?: string;
   onClick?: () => void;
   field: any;
+  name: string,
+  placeholder:string
 }
 
 const CustomInputDate: FC<CustomInputDateI> = forwardRef(
-  ({ field, value, onClick }, ref: React.ForwardedRef<HTMLSpanElement>) => {
+  ({ field, value, onClick, placeholder, name }, ref: React.ForwardedRef<HTMLSpanElement>) => {
     return (
       <div className={s.date}>
         <span
-          id="date"
+          id={field.name}
           onMouseDown={(e) => field.onBlur({ ...e, type: "blur" })}
           className={s.date}
           ref={ref}
           onClick={onClick}
         >
-          {value ? value : "Выберите дату"}
+          {value ? value : placeholder}
         </span>
       </div>
     );

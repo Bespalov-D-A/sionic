@@ -33,7 +33,7 @@ const DateField: FC<DateFieldI> = (props) => {
   return (
     <div className={s["date-pick"]}>
       <DatePicker
-        customInput={<CustomInputDate field={field} />}
+        customInput={<CustomInputDate placeholder='Выберите дату' name={props.name} field={field} />}
         locale="ru"
         minDate={new Date()}
         placeholderText="Выберите дату"

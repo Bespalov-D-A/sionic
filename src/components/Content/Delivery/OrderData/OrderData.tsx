@@ -1,17 +1,22 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useCart } from "react-use-cart";
 import { numFormat } from "../../../../utilites/formatNumbers";
-import {IDeliveryFormError} from "../../../../validators/deliveryFormValidate";
+import { IDeliveryFormError } from "../../../../validators/deliveryFormValidate";
 import s from "./OrderData.module.css";
 
 interface OrederDataProps {
-  createOrder: ()=>void,
-    errors: IDeliveryFormError
+  errors: IDeliveryFormError;
+  isSubmitting:boolean,
 }
 
-const OrederData: FC<OrederDataProps> = ({errors, createOrder}) => {
+const OrederData: FC<OrederDataProps> = ({ errors,  isSubmitting }) => {
   const { cartTotal } = useCart();
+  const [isSubmitingState, setIsSubmitingState] = useState<boolean>(false)
   const [delivery, setDelivery] = useState(200584);
+
+  useEffect(()=> {
+    if(isSubmitting) setIsSubmitingState(true)
+  }, [isSubmitting])
 
   return (
     <div className={s["order-data"]}>
@@ -31,10 +36,12 @@ const OrederData: FC<OrederDataProps> = ({errors, createOrder}) => {
           <span className={s.num}>{numFormat(delivery + cartTotal)}₽</span>
         </p>
       </div>
-      <button type='submit' className={s.btn + " blue-btn"}>
+      <button type="submit" className={s.btn + " blue-btn"}>
         Сделать заказ
       </button>
-    {!Object.keys(errors).length || 'Форма доставки заолнена не верно' }
+      <span className={s.err}>
+        {isSubmitingState && Object.keys(errors).length ? "Форма доставки заполнена не верно" :' '}
+      </span>
     </div>
   );
 };

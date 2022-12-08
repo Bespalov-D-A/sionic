@@ -1,85 +1,69 @@
-import { useField } from "formik";
-import { FC } from "react";
-import Select, { ActionMeta, StylesConfig } from "react-select";
+import DatePicker from "react-datepicker";
 import { useAppDispatch } from "../../../../../../hooks/useAppDispatch";
-import {
-  timeI,
-  updateTime,
-} from "../../../../../../store/slices/deliveryFormSlice";
+import { useAppSelector } from "../../../../../../hooks/useAppSelector";
+import { format, setMinutes, setHours } from "date-fns";
+import { registerLocale } from "react-datepicker";
+import { updateTime } from "../../../../../../store/slices/deliveryFormSlice";
 import s from "./Time.module.css";
-import "./Time.css";
+import ru from "date-fns/locale/ru";
+import { useField, useFormikContext } from "formik";
 import InputErrMsg from "../../../../../common/InputErrMsg/InputErrMsg";
+import { FC } from "react";
+import CustomInputDate from "../Date/CustomInputDate/CustomInputDate";
+registerLocale("ru", ru);
 
-interface TimeProps {
+interface TimeFieldI {
   name: string;
 }
 
-export const timeOptions = [
-  { value: "10:00", label: "10:00" },
-  { value: "11:00", label: "11:00" },
-  { value: "12:00", label: "12:00" },
-  { value: "13:00", label: "13:00" },
-  { value: "14:00", label: "14:00" },
-  { value: "15:00", label: "15:00" },
-  { value: "16:00", label: "16:00" },
-  { value: "17:00", label: "17:00" },
-  { value: "18:00", label: "18:00" },
-  { value: "19:00", label: "19:00" },
-  { value: "20:00", label: "20:00" },
-];
+export const currentHour = Number(format(new Date(), "h"));
 
-const Time: FC<TimeProps> = (props) => {
-  const { name } = props;
-  const [field, meta, helper] = useField(props);
+const TimeField: FC<TimeFieldI> = (props) => {
+  const [field, meta] = useField(props);
   const dispatch = useAppDispatch();
-  const setTime = (value: timeI) => {
-    dispatch(updateTime(value));
+  const selectedTime = useAppSelector((state) => state.deliveryFormSlice.time);
+  const { setFieldValue } = useFormikContext();
+
+  const setTime = (date: Date) => {
+    dispatch(updateTime(date.toString()));
   };
 
-  //@ts-ignore
-  const onChange = (option: Option | null, actionMeta: ActionMeta<Option>) => {
-    helper.setValue(option);
-    setTime(option);
+  const handlerChange = (date: Date) => {
+    setFieldValue(props.name, date);
+    setTime(date);
   };
-
-  const colourStyles: StylesConfig<any> = {
-    option: (styles, state) => ({
-      ...styles,
-      backgroundColor: state.isFocused
-        ? "#b2d3fd"
-        : state.isSelected
-        ? "#2983FB"
-        : "#fff",
-      cursor: state.isFocused ? 'pointer' : 'arrow'
-    }),
-    singleValue: (styles ) => ({...styles, color: '#727280'}),
-  };
-
-  const themeFunc = (theme: any) => ({
-    ...theme,
-    colors: {
-      ...theme.colors,
-      primary: "white",
-    },
-  });
 
   return (
-    <div className={s.time}>
-      <Select
-        isSearchable={false}
-        onChange={onChange}
-        classNamePrefix="select"
-        name={name}
-        placeholder="Выберите время"
-        value={field.value}
-        theme={themeFunc}
-        //@ts-ignore
-        styles={colourStyles}
-        options={timeOptions}
+    <div className={s["time-pick"]}>
+      <DatePicker
+        customInput={
+          <CustomInputDate
+            name={props.name}
+            placeholder="Выберите время"
+            field={field}
+          />
+        }
+        locale="ru"
+        minTime={setHours(setMinutes(new Date(), 0), currentHour + 4)}
+        maxTime={setHours(setMinutes(new Date(), 0), 19)}
+        minDate={new Date("12:00")}
+        placeholderText="Выберите время"
+        showTimeSelect
+        showTimeSelectOnly
+        timeIntervals={30}
+        timeCaption="Время"
+        dateFormat="h:mm"
+        selected={selectedTime ? new Date(selectedTime) : undefined}
+        onChange={handlerChange}
+        withPortal
       />
-      <InputErrMsg style={{top: '18px'}} msg={meta.error} touched={meta.touched}/>
+      <InputErrMsg
+        style={{ top: "18px", left: "10px" }}
+        msg={meta.error}
+        touched={meta.touched}
+      />
     </div>
   );
 };
 
-export default Time;
+export default TimeField;

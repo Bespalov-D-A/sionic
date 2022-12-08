@@ -1,6 +1,6 @@
 import { FC } from "react";
 import s from "./When.module.css";
-import Time from "./Time/Time";
+import TimeField from "./Time/Time";
 import DateField from "./Date/Date";
 
 interface WhenProps {
@@ -14,7 +14,7 @@ const When: FC<WhenProps> = ({nameTime, nameDate}) => {
       <h4 className={s.title}>Когда доставить?</h4>
       <div className={s["date-time"]}>
         <DateField name={nameDate}/>
-        <Time name={nameTime} />
+        <TimeField name={nameTime} />
       </div>
     </div>
   );

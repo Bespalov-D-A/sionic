@@ -53,3 +53,11 @@
 	width: 100%;
 	height: 50px;
 }
+
+.err {
+	display: block;
+	padding-top: 8px;
+	font-size: 12px;
+	text-align: center;
+	color: red;
+}

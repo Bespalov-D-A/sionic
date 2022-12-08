@@ -15,9 +15,6 @@ const Delivery: FC<DeliveryProps> = ({}) => {
   const initValues = useAppSelector((state) => state.deliveryFormSlice);
   const dispatch = useAppDispatch();
   const { items } = useCart();
-  const createOrder = () => {
-    dispatch(updateOrders(items));
-  };
 
   return (
     <Formik
@@ -26,13 +23,15 @@ const Delivery: FC<DeliveryProps> = ({}) => {
       validate={validateDeliveryForm}
       onSubmit={(values, errors) => console.log("")}
     >
-      {({ handleSubmit, errors }) => (
+      {({handleSubmit, errors, isSubmitting}) => (
         <form onSubmit={handleSubmit}>
           <div className={s.delivery}>
             <DeliveryForm />
-            <OrderData errors={errors} createOrder={createOrder} />
+            <OrderData
+              errors={errors}
+              isSubmitting={isSubmitting}
+            />
           </div>
-          <button onClick={() => console.log(errors)}>sdsdd</button>
         </form>
       )}
     </Formik>
