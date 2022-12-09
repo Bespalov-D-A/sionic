@@ -1,4 +1,4 @@
-import {  configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { createReducer } from "redux-orm";
 import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel2";
 import storage from "redux-persist/es/storage";
@@ -16,27 +16,29 @@ import orderHistorySlice, {
 
 export const ormReducer = createReducer(orm);
 
-const persistConfig = {
-  key: "root",
+const getConfig = (str: string) => ({
+  key: str,
   storageSession,
   storage,
   stateReconciler: autoMergeLevel2,
-};
+});
+
+const rootReducer = combineReducers({
+  deliveryFormSlice: persistReducer<deliveryFormState, any>(
+    getConfig('delivery'),
+    deliveryFormSlice
+  ),
+  orderHistorySlice: persistReducer<orderHistoryState, any>(
+    getConfig('history'),
+    orderHistorySlice
+  ),
+  ormReducer,
+  commonSlice,
+});
 
 export const store = configureStore({
   devTools: process.env.NODE_ENV !== "production",
-  reducer: {
-    deliveryFormSlice: persistReducer<deliveryFormState, any>(
-      persistConfig,
-      deliveryFormSlice
-    ),
-    orderHistorySlice: persistReducer<orderHistoryState, any>(
-      persistConfig,
-      orderHistorySlice
-    ),
-    ormReducer,
-    commonSlice,
-  },
+  reducer: rootReducer,
   middleware: [thunk],
 });
 

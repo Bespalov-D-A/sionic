@@ -18,6 +18,7 @@ import Variations from "./Variations/Variations";
 import Properties from "./Properties/Properties";
 import { useCart } from "react-use-cart";
 import { IProductInCart } from "../../../types/orderTypes";
+import {threeDots} from "../../../utilites/formatStrings";
 
 interface ProductCardProps {
   productCard: IProduct;
@@ -83,7 +84,7 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
           setSelectedVariation={setSelectedVariation}
           productId={id}
         />
-        <p className={s.title}>{productCard.name}</p>
+        <p className={s.title}>{threeDots(productCard.name, 35)}</p>
         <Properties selectedVariation={selectedVariation} />
       </div>
       <Price price={selectedVariation?.price} />

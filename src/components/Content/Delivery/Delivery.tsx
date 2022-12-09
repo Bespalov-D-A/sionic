@@ -20,12 +20,12 @@ const Delivery: FC<DeliveryProps> = ({}) => {
   const { items, emptyCart }: any = useCart();
 
   const createOrder = (values: IDeliveryFormValues, actions: any) => {
+    dispatch(updateOrders(orderUtil(items, values)));
+    dispatch(clearForm());
     emptyCart();
     actions.resetForm({
       values: { name: "", phone: "", address: "", date: null, time: null },
     });
-    dispatch(updateOrders(orderUtil(items, values)));
-    dispatch(clearForm());
   };
 
   return (

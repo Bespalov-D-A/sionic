@@ -24,16 +24,16 @@ const OrederData: FC<OrederDataProps> = ({ errors,  isSubmitting }) => {
         <div>
           <p className={s.cost}>
             Стоимость доставки:{" "}
-            <span className={s.num}>{numFormat(delivery)}₽</span>
+            <span className={s.num}>{numFormat(delivery, ' ')}₽</span>
           </p>
           <p className={s.cost}>
             Стоимость товаров:{" "}
-            <span className={s.num}>{numFormat(cartTotal)}₽</span>
+            <span className={s.num}>{numFormat(cartTotal, ' ')}₽</span>
           </p>
         </div>
         <p className={s.total}>
           Итого:{" "}
-          <span className={s.num}>{numFormat(delivery + cartTotal)}₽</span>
+          <span className={s.num}>{numFormat(delivery + cartTotal, ' ')}₽</span>
         </p>
       </div>
       <button type="submit" className={s.btn + " blue-btn"}>

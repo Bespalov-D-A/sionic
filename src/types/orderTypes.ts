@@ -1,7 +1,15 @@
-import {deliveryFormState} from "../store/slices/deliveryFormSlice";
+import { deliveryFormState } from "../store/slices/deliveryFormSlice";
+
+export interface IReadyOrder {
+	delivery: IDeliveryFormValues;
+	product: IProductInCart;
+	paid: boolean
+	date: string
+	orderId: string
+}
 
 export interface IDeliveryFormValues extends deliveryFormState {
-	[key: string]: any
+	[key: string]: any;
 }
 
 export interface IProductInCart {

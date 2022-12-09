@@ -1,6 +1,7 @@
-@import "./../../../../../css/index.css";
+@import "./../../../../css/index.css";
 
 .data {
+	max-width: 120px;
 	font-weight: 600;
 	font-size: 12px;
 	line-height: 122%;
