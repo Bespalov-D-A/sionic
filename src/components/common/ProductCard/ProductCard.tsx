@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import Price from "./Price/Price";
-import s from "./ProductCard.module.css";
+import Price from "./Price/Price"; import s from "./ProductCard.module.css";
 import Btn from "./Btn/Btn";
 import axios from "axios";
 import {
@@ -72,11 +71,7 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
       <div className={s.header}>
         {cover.length == 0 ? (
           "Loading..."
-        ) : (
-          <>
-            <img src={cover} alt="" className={s.cover} />
-          </>
-        )}
+        ) : ( <img src={cover} alt="" className={s.cover} />)}
       </div>
       <div className={s["title-block"]}>
         <Variations

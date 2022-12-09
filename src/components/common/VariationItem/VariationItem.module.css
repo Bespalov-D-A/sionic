@@ -1,7 +1,8 @@
 .price {
-	width: 164px;
+	width: calc(100% - 60px);
 	padding: 6px 8px 3px;
 	margin: 3px;
+	margin-right: 10px;
 	border-radius: 8px;
 	text-align: center;
 	background: honeydew;

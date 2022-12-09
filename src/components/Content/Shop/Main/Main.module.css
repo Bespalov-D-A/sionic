@@ -1,5 +1,8 @@
 .main {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-column-gap: 20px;
+	grid-row-gap: 30px;
 	position: relative;
 	flex-flow: row wrap;
 	justify-content: flex-start;

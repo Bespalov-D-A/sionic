@@ -8,10 +8,10 @@
 
 .flickity-prev-next-button {
   position: absolute;
-  top: 4px;
+  top: 3px;
   border: none;
   width: 20px;
-  height: 24px;
+  height: 26px;
   z-index: 10;
 }
 /* icon color */
