@@ -1,5 +1,16 @@
 .main {
 	display: flex;
+	position: relative;
 	flex-flow: row wrap;
 	justify-content: flex-start;
 }
+
+.infinite {
+	position: absolute;
+	width: 100%;
+	height: 20px;
+	bottom: 30px;
+	background: transparent;
+}
+
+
