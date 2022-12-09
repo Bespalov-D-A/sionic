@@ -6,6 +6,7 @@
 	line-height: 140%;
 	padding: 10px 0;
 	border-radius: 26px;
+	outline: none;
 	background-color: transparent;
 	border: solid 1px var(--color-accent-blue);
 	color: var(--color-accent-blue);

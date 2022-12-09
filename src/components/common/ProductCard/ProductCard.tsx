@@ -88,7 +88,7 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
         <Properties selectedVariation={selectedVariation} />
       </div>
       <Price price={selectedVariation?.price} />
-      <Btn addCart={addCartFunc} />
+      <Btn isDisabled={selectedVariation ? false : true} addCart={addCartFunc} />
     </div>
   );
 };
