@@ -9,6 +9,12 @@
 	max-width: 351px;
 }
 
+@media screen and (max-width: 1366px) {
+	.right-side {
+		padding-top: 90px;
+	}
+}
+
 @media screen and (max-width: 1024px) {
 	.right-side {
 		max-width: 100%;

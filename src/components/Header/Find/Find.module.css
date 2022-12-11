@@ -37,3 +37,12 @@
 	border: none;
 	outline: none;
 }
+
+@media screen and (max-width: 800px) {
+	 .btn {
+		width: 42px;
+	 }
+	 .btn:after {
+		width: 42px;
+	 }
+}

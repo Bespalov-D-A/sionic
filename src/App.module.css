@@ -16,3 +16,9 @@
 	display: flex;
 	flex-flow: column wrap;
 }
+
+@media screen and (max-width: 1024px) {
+	.content {
+
+	}
+}

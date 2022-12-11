@@ -3,7 +3,21 @@
 .header {
 	display: flex;
 	align-items: center;
+	position: fixed;
 	padding: 20px 50px 12px;
 	width: 100%;
 	max-width: var(--content-size);
+	z-index: 40;
+	background: #fff;
+}
+
+@media screen and (max-width: 1024px) {
+	.header {
+		}
+}
+
+@media screen and (max-width: 600px) {
+	.header {
+		padding: 20px 0 12px 20px;
+	}
 }
