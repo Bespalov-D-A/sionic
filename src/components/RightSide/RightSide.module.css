@@ -1,4 +1,4 @@
-@import './../../css/index.css';
+@import "./../../css/index.css";
 
 .right-side {
 	position: relative;
@@ -7,4 +7,10 @@
 	width: 100%;
 	padding: 20px 16px 0 24px;
 	max-width: 351px;
+}
+
+@media screen and (max-width: 1024px) {
+	.right-side {
+		max-width: 100%;
+	}
 }

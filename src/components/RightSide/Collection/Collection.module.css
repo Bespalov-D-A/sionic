@@ -16,3 +16,10 @@
 	text-align: center;
 	color: #ffffff;
 }
+
+@media screen and (max-width: 1024px) {
+	.collection {
+		width: 311px;
+		margin-right: 24px;
+	}
+}

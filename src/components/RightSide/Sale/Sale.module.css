@@ -39,3 +39,11 @@
 	background-color: var(--color-accent-blue);
 	border-radius: 51px;
 }
+
+@media screen and (max-width: 1024px) {
+	.sale {
+		height: 168px;
+	margin-right: 20px;
+  
+	}
+}

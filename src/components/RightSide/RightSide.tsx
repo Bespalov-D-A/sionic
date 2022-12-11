@@ -5,19 +5,18 @@ import s from "./RightSide.module.css";
 import Sale from "./Sale/Sale";
 import collectionsData from "./../../data/Collections.json";
 import Flickity from "react-flickity-component";
-import { useMediaQuery } from "react-responsive";
-import List from "../common/List";
 
-interface RightSideProps {}
+interface RightSideProps {
+  slider?: boolean;
+}
 
-const RightSide: FC<RightSideProps> = ({}) => {
+const RightSide: FC<RightSideProps> = ({ slider }) => {
   const [collections, setCollections] = useState<Icollection[]>([]);
-  const isDesktopOrLaptop = useMediaQuery({
-    query: "(max-width: 1024px)",
-  });
 
   const flkctyOptions = {
     pageDots: false,
+    draggable: true,
+    contain: true,
   };
 
   useEffect(() => {
@@ -32,14 +31,17 @@ const RightSide: FC<RightSideProps> = ({}) => {
     const newArr = arr.map((collection) => (
       <Collection collection={collection} key={collection.id} />
     ));
-    newArr.unshift(<Sale />);
-    return newArr;
+    return [<Sale key="sale" />, ...newArr];
   };
 
   return (
     <div className={s["right-side"]}>
-      {isDesktopOrLaptop ? (
-        <Flickity options={flkctyOptions}>
+      {slider ? (
+        <Flickity
+          options={flkctyOptions}
+          className={"carousel"}
+          reloadOnUpdate={true}
+        >
           {remapCollectionsItem(collections)}
         </Flickity>
       ) : (
