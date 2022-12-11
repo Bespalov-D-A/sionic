@@ -1,11 +1,12 @@
 .product-card {
 	display: flex;
 	flex-flow: column wrap;
+	width: 100%;
 }
 
 .header {
 	position: relative;
-	padding-top: 64.485%;
+	padding-top: 100%;
 	margin-bottom: 8px;
 	text-align: center;
 }
