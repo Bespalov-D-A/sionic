@@ -7,8 +7,11 @@ interface ProfilePhotoProps {
 }
 
 const ProfilePhoto: FC<ProfilePhotoProps> = ({}) => {
-  return <div className={s['profile-photo']}>
-<img src={photo} alt="" />
+  return <div className={s.profile}>
+    <div>
+<img src={photo} className={s['profile-photo']} alt="" />
+    </div>
+<span>Лилия Лилявская</span>
   </div>
 }
 

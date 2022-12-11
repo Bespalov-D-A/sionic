@@ -3,6 +3,7 @@
 .find {
 	display: flex;
 	width: 100%;
+	flex: 1 1;
 	max-width: 468px;
 	padding: 4px;
 	margin-right: 16px;
@@ -36,6 +37,7 @@
 	width: 100%;
 	border: none;
 	outline: none;
+	border-radius: 300px;
 }
 
 @media screen and (max-width: 800px) {
@@ -45,4 +47,13 @@
 	 .btn:after {
 		width: 42px;
 	 }
+}
+
+@media screen and (max-width: 600px) {
+	.find {
+	width: 100%;
+		margin-bottom: 40px;
+		border-color: var(--color-dark-gray);
+	background: #fff;
+	}
 }

@@ -2,13 +2,22 @@
 
 .header {
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	position: fixed;
-	padding: 20px 50px 12px;
+	padding: 20px 20px 12px 50px;
 	width: 100%;
 	max-width: var(--content-size);
 	z-index: 40;
 	background: #fff;
+}
+
+.header__wrap {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100%;
 }
 
 .wrap {
@@ -17,12 +26,38 @@
 
 @media screen and (max-width: 1024px) {
 	.header {
+		padding: 20px 20px 12px 20px;
 		}
 }
 
 @media screen and (max-width: 600px) {
 	.header {
-		justify-content: space-between;
+		position: absolute;
+		height: 100vh;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		justify-content: flex-start;
+		align-items: flex-start;
+		width: calc(100% - 100px);
+		flex-flow: column wrap;
 		padding: 20px 20px 12px 20px;
+		background: #282c34;
+		color: #fefefe !important;
+	}
+	.header > :first-child {
+		margin: 20px 20px 0 24px;
+	}
+	.header__wrap {
+		flex-flow: column wrap;
+		align-items: flex-start;
+	}
+	.header__wrap > {
+		display: flex;
+		flex-flow: column wrap;
+	flex-grow: 1;
+	}
+	.wrap {
+		display: none;
 	}
 }

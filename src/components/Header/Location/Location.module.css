@@ -25,3 +25,15 @@
 	background-repeat: no-repeat;
 	background-position: center center;
 }
+
+@media screen and (max-width: 800px) {
+	.location {
+		width: 84px;
+	}
+}
+@media screen and (max-width: 600px) {
+	.location {
+		margin-top: 24px;
+		color: #fefefe;
+	}
+}
