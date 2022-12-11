@@ -6,6 +6,7 @@ import ProfilePhoto from './ProfilePhoto/ProfilePhoto'
 import s from './Header.module.css'
 import Logo from '../common/Logo/Logo'
 import {useMediaQuery} from 'react-responsive'
+import MobileMenuBtn from './MobileMenuBtn/MobileMenuBtn'
 
 interface HeaderProps {
 }
@@ -17,10 +18,13 @@ const Header: FC<HeaderProps> = ({}) => {
 
 
   return <div className={s.header + ' header'}>
-    {isMaxWidth || <Logo />}
+    <Logo />
     {isMaxWidth  ||  <Location /> }
-    <Find />
+  {isMaxWidth || <Find />}
+    <div className={s.wrap}>
     <CartBtn />
+    <MobileMenuBtn />
+    </div>
     {isMaxWidth || <ProfilePhoto />}
   </div>
 }
