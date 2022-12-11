@@ -62,7 +62,7 @@ const Variations: FC<VariationsI> = ({
 
 
   return (
-    <div className={s.variations}>
+    <div className={s.variations + ' variations'}>
       <div
         onClick={() => selectVariationFunc("prev")}
         className={"flickity-button flickity-prev-next-button previous"}

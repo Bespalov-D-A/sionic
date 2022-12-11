@@ -1,6 +1,7 @@
 @import './../../css/index.css';
 
 .right-side {
+	position: relative;
 	display: flex;
 	flex-flow: column wrap;
 	width: 100%;

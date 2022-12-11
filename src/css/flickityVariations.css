@@ -1,12 +1,12 @@
 /* smaller, dark, rounded square */
-.flickity-button {
+.variations .flickity-button {
   background-color: #fff;
 }
-.flickity-button:hover {
+.variations .flickity-button:hover {
   background-color: #f90;
 }
 
-.flickity-prev-next-button {
+.variations .flickity-prev-next-button {
   position: absolute;
   top: 3px;
   border: none;
@@ -15,16 +15,16 @@
   z-index: 10;
 }
 /* icon color */
-.flickity-button-icon {
+.variations .flickity-button-icon {
   fill: brown;
 }
 /* position outside */
-.flickity-prev-next-button.previous {
+.variations .flickity-prev-next-button.previous {
   border-radius: 0 5px 5px 0;
   left: 0;
 }
 
-.flickity-prev-next-button.previous:before {
+.variations .flickity-prev-next-button.previous:before {
   content: "";
   position: absolute;
   display: block;
@@ -39,13 +39,13 @@
   transform: rotate(180deg);
 }
 
-.flickity-prev-next-button.next {
+.variations .flickity-prev-next-button.next {
   backround: red;
   border-radius: 5px 0 0 5px;
   right: 0;
 }
 
-.flickity-prev-next-button.next:before {
+.variations .flickity-prev-next-button.next:before {
   content: "";
   position: absolute;
   display: block;
