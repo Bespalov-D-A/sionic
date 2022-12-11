@@ -1,23 +1,39 @@
-import { FC } from "react";
+import { FC, useEffect, useRef } from "react";
 import CartBtn from "./CartBtn/CartBtn";
 import Find from "./Find/Find";
 import Location from "./Location/Location";
 import ProfilePhoto from "./ProfilePhoto/ProfilePhoto";
-import s from "./Header.module.css";
 import Logo from "../common/Logo/Logo";
-import { useMediaQuery } from "react-responsive";
+import s from './Header.module.css'
+import {useAppSelector} from "../../hooks/useAppSelector";
+import {useAppDispatch} from "../../hooks/useAppDispatch";
+import {closeMobileMenu, setMenuIsOpen} from "../../store/slices/commonSlice";
+import {handlerClickOutside} from "../../utilites/clickHandlerOutsideElement";
 
-interface HeaderProps {}
+interface HeaderProps {
+  mobileBtn: React.MutableRefObject<HTMLDivElement>
+}
 
-const Header: FC<HeaderProps> = ({}) => {
-  const isMaxWidth = useMediaQuery({
-    query: "(max-width: 600px)",
-  });
+const Header: FC<HeaderProps> = ({mobileBtn}) => {
+  const menuIsOpen = useAppSelector(state => state.commonSlice.menuIsOpen)
+  const dispatch = useAppDispatch()
+  const headerRef = useRef() as React.MutableRefObject<HTMLDivElement>
 
-  //<MobileMenuBtn />
+  const closeMenu = () => {
+    dispatch(closeMobileMenu()) 
+  }
+
+  const unFocus = (e: any) => {
+    handlerClickOutside(e, [headerRef, mobileBtn], closeMenu )
+  }
+
+  useEffect(()=> {
+    document.addEventListener('mousedown', unFocus)
+    return () => document.removeEventListener('mousedown', unFocus)
+  }, [])
 
   return (
-    <div className={s.header}>
+    <div ref={headerRef} className={s.header + ' ' + (menuIsOpen ? s.open : '')}>
       <Logo />
 
       <div className={s["header__wrap"]}>

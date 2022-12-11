@@ -47,13 +47,17 @@
 		align-items: flex-start;
 		width: calc(100% - 100px);
 		flex-flow: column wrap;
-		padding: 20px 20px 12px 20px;
+		padding: 72px 20px 12px 20px;
+		visibility: hidden;
 		background: #282c34;
 		color: #fefefe !important;
 	}
 	.header > :first-child {
 		margin: 20px 20px 0 24px;
 	}
+	.header.open {
+		visibility: visible;
+		}
 	.header__wrap {
 		flex-flow: column wrap;
 		align-items: flex-start;
