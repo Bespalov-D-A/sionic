@@ -33,7 +33,12 @@
 }
 @media screen and (max-width: 600px) {
 	.location {
-		margin-top: 24px;
+		justify-content: baseline;
+		margin: 46px 0 6px 20px;
+		line-height: 25px;
 		color: #fefefe;
+	}
+	.location:before {
+	background-image: url("./../../../img/icons/marker-light.svg");
 	}
 }
