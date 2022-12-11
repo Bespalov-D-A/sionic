@@ -23,3 +23,16 @@
 .right-side {
 	max-width: var(--right-side);
 }
+
+@media screen and (max-width: 800px) {
+	.wrapper {
+		flex-flow: column wrap;
+	}
+	.right-side {
+		padding-left: 50px;
+	}
+	.wrap-content {
+		flex-flow: column wrap;
+	}
+
+}
