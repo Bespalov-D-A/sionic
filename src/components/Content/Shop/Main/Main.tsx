@@ -66,6 +66,7 @@ const Main: FC<MainProps> = ({}) => {
   };
 
   return (
+    <>
     <div className={s.main}>
       {!error ? (
         selectedCategory ? (
@@ -85,8 +86,10 @@ const Main: FC<MainProps> = ({}) => {
       {(error && !products) || (
         <div className={s.infinite} ref={lastElementRef} ></div>
       )}
-      {(error && !products) || <ShowMoreBtn showMoreFunc={showMoreFunc} />}
     </div>
+
+      {(error && !products) || <ShowMoreBtn showMoreFunc={showMoreFunc} />}
+    </>
   );
 };
 

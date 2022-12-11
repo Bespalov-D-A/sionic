@@ -11,6 +11,8 @@
 	padding: 12px;
 	z-index: 50;
 	background: #fff;
+
+	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
 @media screen and (max-width: 600px) {

@@ -6,6 +6,7 @@
 	position: relative;
 	flex-flow: row wrap;
 	justify-content: flex-start;
+	margin-bottom: 24px;
 }
 
 .infinite {
