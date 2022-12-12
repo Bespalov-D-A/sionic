@@ -10,12 +10,7 @@ import {
 } from "../../../../selectors/productSelector";
 import { ADD_PRODUCTS_PACK } from "../../../../store/models/Product/Product";
 import { params } from "../../../../types/apiTypes";
-import { IProduct } from "../../../../types/productTypes";
-import List from "../../../common/List";
-import Preloader from "../../../common/Preloader/Preloader";
-import ProductCard from "../../../common/ProductCard/ProductCard";
-import ShowMoreBtn from "../../../common/ShowMoreBtn/ShowMoreBtn";
-import s from "./Main.module.css";
+import MainPresent from "./MainPresent";
 
 interface MainProps {}
 
@@ -38,14 +33,15 @@ const Main: FC<MainProps> = ({}) => {
   });
 
   useObserver({
-    callback:()=> isFetch({
-      filter: `{"category_id":${selectedCategory}}`,
-      range: `[${productsCount}, ${productsCount + 3}]`,
-    }),
+    callback: () =>
+      isFetch({
+        filter: `{"category_id":${selectedCategory}}`,
+        range: `[${productsCount}, ${productsCount + 3}]`,
+      }),
     lastElementRef,
     isLoad,
     productsCount,
-    selectedCategory
+    selectedCategory,
   });
 
   useEffect(() => {
@@ -67,31 +63,14 @@ const Main: FC<MainProps> = ({}) => {
   };
 
   return (
-    <>
-    <div className={s.main}>
-      {!error ? (
-        selectedCategory ? (
-          <List
-            //@ts-ignore
-            items={products}
-            renderItem={(productCard: IProduct) => (
-              <ProductCard productCard={productCard} key={productCard.id} />
-            )}
-          />
-        ) : (
-          "Категории не были загружены"
-        )
-      ) : (
-        "Ошибка загрузки данных"
-      )}
-      {(error && !products) || (
-        <div className={s.infinite} ref={lastElementRef} ></div>
-      )}
-    </div>
-
-    {isLoad && <div className={s['preloader-block']}> <Preloader /></div>}
-      {(error && !products) || <ShowMoreBtn showMoreFunc={showMoreFunc} />}
-    </>
+    <MainPresent
+      error={error}
+      selectedCategory={selectedCategory}
+      products={products}
+      showMoreFunc={showMoreFunc}
+      lastElementRef={lastElementRef}
+      isLoad={isLoad}
+    />
   );
 };
 

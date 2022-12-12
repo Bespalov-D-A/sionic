@@ -5,7 +5,7 @@ import { useAppSelector } from "../../../../hooks/useAppSelector";
 import { useLoader } from "../../../../hooks/useLoader";
 import { getAllCategoriesSelector } from "../../../../selectors/categorySelector";
 import { ADD_PRODUCT_CATEGORY_PACK } from "../../../../store/models/Category/constants";
-import {setSelectedCategory} from "../../../../store/slices/commonSlice";
+import { setSelectedCategory } from "../../../../store/slices/commonSlice";
 import { ICategory } from "../../../../types/productTypes";
 import CategoryItem from "../../../common/CategoryItem/CategoryItem";
 import List from "../../../common/List";
@@ -20,7 +20,7 @@ const Categories: FC<CategoriesI> = ({}) => {
 
   const [isFetch, isLoad, error]: any = useLoader(async () => {
     const response = await categoryService.getAllCategories();
-    dispatch(setSelectedCategory(response.data[0].id))
+    dispatch(setSelectedCategory(response.data[0].id));
     dispatch({ type: ADD_PRODUCT_CATEGORY_PACK, payload: response.data });
   });
 
@@ -31,7 +31,7 @@ const Categories: FC<CategoriesI> = ({}) => {
   //@ts-ignore
   const categories = getAllCategoriesSelector(state);
 
-  return (
+  return !error ? (
     <div className={s.tags}>
       {isLoad && <Preloader />}
       <List
@@ -42,6 +42,8 @@ const Categories: FC<CategoriesI> = ({}) => {
         )}
       />
     </div>
+  ) : (
+    <>Ошибка загрузки категорий</>
   );
 };
 

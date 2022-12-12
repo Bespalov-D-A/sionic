@@ -1,8 +1,4 @@
 import { FC, useEffect } from "react";
-import Top from "./Top/Top";
-import s from "./Shop.module.css";
-import Main from "./Main/Main";
-import Categories from "./Categories/Categories";
 import { useLoader } from "../../../hooks/useLoader";
 import { params } from "../../../types/apiTypes";
 import { variationService } from "../../../API/variationService";
@@ -10,7 +6,7 @@ import { ADD_PRODUCT_VARIATION_PROPERTY } from "../../../store/models/VariationP
 import { ADD_PRODUCT_VARIATION_PROP_LIST_VALUES } from "../../../store/models/VariationPropertyListValues/VariationPropertyListValues";
 import {useAppDispatch} from "../../../hooks/useAppDispatch";
 import {useAppSelector} from "../../../hooks/useAppSelector";
-import Preloader from "../../common/Preloader/Preloader";
+import ShopPresent from "./ShopPresent";
 
 interface ShopProps {}
 
@@ -38,14 +34,9 @@ const Shop: FC<ShopProps> = ({}) => {
     isFetch()
   }, [])
 
-  return (
-    <div className={s.shop}>
-      <Top />
-      <Categories />
-      {isLoad ? <Preloader /> : !selectedCat || <Main />}
-    </div>
-  );
+ return <ShopPresent error={error }isLoad={isLoad} selectedCat={selectedCat} />
+
 };
 
-export default Shop;
 
+export default Shop;
