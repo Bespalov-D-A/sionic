@@ -32,6 +32,12 @@
 	font-feature-settings: "pnum" on, "lnum" on;
 }
 
+@media screen and (min-width: 600px) and (max-width: 1366px) {
+	.count {
+		padding: 0 20px;
+	}
+}
+
 @media screen and (max-width: 800px) {
 	.count-block {
 

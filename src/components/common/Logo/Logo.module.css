@@ -5,4 +5,6 @@
 	line-height: 43px;
 }
 
-
+.logo:hover {
+	cursor: pointer;
+}

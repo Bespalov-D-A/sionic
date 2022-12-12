@@ -54,6 +54,10 @@
 	height: 50px;
 }
 
+.btn:hover {
+	cursor:pointer;
+}
+
 .err {
 	display: block;
 	padding-top: 8px;
