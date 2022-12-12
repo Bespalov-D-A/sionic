@@ -1,7 +1,7 @@
 @import "./../../../../css/index.css";
 
 .menu {
-
+		width: 300px;
 }
 
 .title {
@@ -11,4 +11,10 @@
 	line-height: 23px;
 	font-feature-settings: "pnum" on, "lnum" on;
 	color: var(--color-dark);
+}
+
+@media screen and (max-width: 800px) {
+	.menu {
+		min-width: 300px;
+	}
 }
