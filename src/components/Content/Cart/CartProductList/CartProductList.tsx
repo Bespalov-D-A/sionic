@@ -8,7 +8,6 @@ interface CartProductListI {}
 
 const CartProductList: FC<CartProductListI> = ({}) => {
 const { items } = useCart();
-console.log(items)
 
   return <div className={s.list}>
     <List

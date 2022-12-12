@@ -67,7 +67,8 @@
 
 @media screen and (max-width: 600px) {
 	.bar {
-		flex-flow: column wrap;
+		height: auto;
+    padding-top: 0;
 		padding-left: 24px;
 	}
 	.wrap {
