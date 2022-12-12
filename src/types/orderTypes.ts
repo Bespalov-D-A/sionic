@@ -1,11 +1,13 @@
 import { deliveryFormState } from "../store/slices/deliveryFormSlice";
 
 export interface IReadyOrder {
+	products: IProductInCart[],
 	delivery: IDeliveryFormValues;
-	product: IProductInCart;
-	paid: boolean
-	date: string
-	orderId: string
+	paid: boolean,
+	date: string,
+	orderId: string,
+		productCount: number,
+		cartTotal: number
 }
 
 export interface IDeliveryFormValues extends deliveryFormState {

@@ -13,8 +13,8 @@ export const  orderHistorySlice =  createSlice({
   name: 'history',
   initialState,
   reducers: {
-    updateOrders: (state,action: PayloadAction<any[]> ) => {
-      state.orders = state.orders.concat(action.payload) 
+    updateOrders: (state,action: PayloadAction<any> ) => {
+      state.orders = [...state.orders,action.payload]
     }
   },
 })

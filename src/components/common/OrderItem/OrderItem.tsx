@@ -11,14 +11,15 @@ interface OrderItemI extends IReadyOrder {
 }
 
 const OrderItem: FC<OrderItemI> = (props) => {
-  const {date, orderId, paid} = props
-  const {cover, name, price, quantity} = props.product
+  const {productCount, date, cartTotal, orderId, paid} = props
+  const {cover } = props.products[0]
   const {address} = props.delivery
+  console.log(props.products)
   return (
     <div className={s.order}>
       <div className={s.main}>
         <img src={cover} alt="" className={s.brend} />
-        <h3 className={s.title}>{name}</h3>
+        <h3 className={s.title}>Xiaomi</h3>
         <div className={s.bar}>
           <span className={s["bar-date"]}>{date}</span>
           <a href="#" className={s.details}>
@@ -29,8 +30,8 @@ const OrderItem: FC<OrderItemI> = (props) => {
       <div className={s.info}>
         <Status  paid={paid}/>
         <OrderNumber orderId={orderId} />
-        <Count quantity={quantity ? quantity : 0} />
-        <Price price={price}/>
+        <Count quantity={productCount} />
+        <Price price={cartTotal}/>
         <Address address={address}/>
       </div>
     </div>

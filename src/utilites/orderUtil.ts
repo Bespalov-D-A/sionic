@@ -3,7 +3,9 @@ import {numFormat} from "./formatNumbers";
 
 export const orderUtil = (
   products: IProductInCart[],
-  values: IDeliveryFormValues
+  values: IDeliveryFormValues,
+  totalItems: number,
+  cartTotal: number
 ) => {
   const id = numFormat( Math.floor(Math.random() * 999999), '-')
   const date = new Date().toLocaleDateString();
@@ -11,11 +13,13 @@ export const orderUtil = (
     if (Math.floor(Math.random() * 10) > 5) return true;
     else return false;
   };
-  return products.map((item: IProductInCart) => ({
-    product: item,
+  return {
     delivery: values,
+    products,
     orderId: id,
     date,
     paid: paidFunc(),
-  }));
+    productCount: totalItems,
+    cartTotal
+  }
 };

@@ -19,10 +19,10 @@ const Delivery: FC<DeliveryProps> = ({}) => {
   const initValues = useAppSelector((state) => state.deliveryFormSlice);
   const dispatch = useAppDispatch();
   const navigate = useNavigate()
-  const { items, emptyCart }: any = useCart();
+  const { cartTotal, totalItems, items, emptyCart }: any = useCart();
 
   const createOrder = (values: IDeliveryFormValues, actions: any) => {
-    dispatch(updateOrders(orderUtil(items, values)));
+    dispatch(updateOrders(orderUtil(items, values, totalItems, cartTotal)));
     dispatch(clearForm());
     emptyCart();
     actions.resetForm({
