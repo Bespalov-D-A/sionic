@@ -12,7 +12,7 @@ interface OrederDataProps {
 const OrederData: FC<OrederDataProps> = ({ errors,  isSubmitting }) => {
   const { cartTotal } = useCart();
   const [isSubmitingState, setIsSubmitingState] = useState<boolean>(false)
-  const [delivery, setDelivery] = useState(200584);
+  const [delivery ] = useState(200584);
 
   useEffect(()=> {
     if(isSubmitting) setIsSubmitingState(true)

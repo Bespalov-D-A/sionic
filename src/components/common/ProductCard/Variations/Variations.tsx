@@ -38,10 +38,11 @@ const Variations: FC<VariationsI> = ({
   },[variations])
 
   const remapVariations = () => {
-    return variations.map((variation: IProductVariation) => (
+    return variations.map((variation: IProductVariation, index: number) => (
       <VariationItem
         variation={variation}
         setSelectedVariation={setSelectedVariation}
+        index={index}
         key={variation.id}
       />
     ));

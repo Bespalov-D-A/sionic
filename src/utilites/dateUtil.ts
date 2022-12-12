@@ -20,7 +20,6 @@ export const compareDate = (selectedDate: string | null, maxTime: number) => {
   const newSelectedDate = new Date(selectedDate);
   //Если выбранная дата позже чем текущая
   const equ = compareAsc(newSelectedDate.getDate(), date.getDate());
-  console.log(equ);
   if (equ) return false;
   else return minTimeFunc(maxTime);
 };

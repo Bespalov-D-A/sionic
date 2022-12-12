@@ -1,10 +1,10 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { useCart } from "react-use-cart";
 import s from "./Count.module.css";
 
 interface CountProps {
   productId: string;
-  quantity: any
+  quantity: any;
 }
 
 const Count: FC<CountProps> = ({ productId, quantity }) => {

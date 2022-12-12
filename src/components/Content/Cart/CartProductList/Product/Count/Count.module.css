@@ -18,10 +18,16 @@
 }
 
 .plus {
+	position:relative;
 	background-image: url("./../../../../../../img/icons/plus.svg");
 }
 .minus {
+	position:relative;
 	background-image: url("./../../../../../../img/icons/minus.svg");
+}
+
+.plus:hover, .minus:hover {
+	cursor: pointer;
 }
 
 .count {

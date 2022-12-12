@@ -12,14 +12,14 @@
 }
 
 .bar::before {
-	content: '';
+	content: "";
 	position: absolute;
 	width: 165px;
 	height: 100px;
 	top: 0;
 	right: 20px;
 	z-index: -10;
-	background-image: url('./../../../../img/cart.svg');
+	background-image: url("./../../../../img/cart.svg");
 	background-repeat: no-repeat;
 	background-position: center center;
 }
@@ -50,11 +50,10 @@
 
 @media screen and (max-width: 800px) {
 	.bar {
-	align-items: center;
-	justify-content: space-between;
+		align-items: center;
+		justify-content: space-between;
 		padding: 27px 20px 23px 20px;
 	}
-	
 }
 
 @media screen and (max-width: 768px) {
@@ -68,7 +67,7 @@
 @media screen and (max-width: 600px) {
 	.bar {
 		height: auto;
-    padding-top: 0;
+		padding-top: 0;
 		padding-left: 24px;
 	}
 	.wrap {

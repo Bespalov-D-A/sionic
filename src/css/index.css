@@ -21,6 +21,7 @@ body {
 body input[type=text]:not(.browser-default) {
 	border-bottom: none;
 	height: auto;
+	margin: 0;
 }
 
 .blue-btn {

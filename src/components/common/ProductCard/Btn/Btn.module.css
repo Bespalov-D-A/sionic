@@ -11,3 +11,7 @@
 	border: solid 1px var(--color-accent-blue);
 	color: var(--color-accent-blue);
 }
+
+.btn:hover {
+	cursor:pointer;
+}

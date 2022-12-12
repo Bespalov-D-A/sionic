@@ -10,14 +10,13 @@ interface NameI {
 }
 
 const Name: FC<NameI> = (props) => {
-  const [field, meta, helper] = useField(props);
+  const [field, meta] = useField(props);
   const dispatch = useAppDispatch();
   const setName = (value: string) => {
     dispatch(updateName(value));
   };
 
   const newOnChangeFunc = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(meta);
     field.onChange(e);
     setName(e.target.value);
   };
@@ -28,13 +27,9 @@ const Name: FC<NameI> = (props) => {
     <div className={s.name}>
       <h4 className={s.title}>Имя</h4>
       <div className={s["name-input-block"]}>
-        <input
-          {...newField}
-          type="text"
-          className={s["name-input"]}
-        />
-        <InputErrMsg touched={meta.touched} msg={meta.error}/>
-              </div>
+        <input {...newField} type="text" className={s["name-input"]} />
+        <InputErrMsg touched={meta.touched} msg={meta.error} />
+      </div>
     </div>
   );
 };

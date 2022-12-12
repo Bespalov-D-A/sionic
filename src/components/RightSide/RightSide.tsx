@@ -39,7 +39,6 @@ const RightSide: FC<RightSideProps> = ({ slider }) => {
       {slider ? (
         <Flickity
           options={flkctyOptions}
-          className={"carousel"}
           reloadOnUpdate={true}
         >
           {remapCollectionsItem(collections)}

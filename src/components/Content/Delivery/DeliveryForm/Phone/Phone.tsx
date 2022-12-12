@@ -10,7 +10,7 @@ interface PhoneProps {
 }
 
 const Phone: FC<PhoneProps> = (props) => {
-  const [field, meta, helper] = useField(props);
+  const [field, meta, ] = useField(props);
   const dispatch = useAppDispatch();
   const setPhone = (value: string) => {
     dispatch(updatePhone(value));

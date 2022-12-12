@@ -8,17 +8,17 @@ import { useCart } from "react-use-cart";
 import { useAppSelector } from "../../../hooks/useAppSelector";
 import { Formik } from "formik";
 import { validateDeliveryForm } from "../../../validators/deliveryFormValidate";
-import { IDeliveryFormValues, IProductInCart } from "../../../types/orderTypes";
+import { IDeliveryFormValues } from "../../../types/orderTypes";
 import { orderUtil } from "../../../utilites/orderUtil";
 import { clearForm } from "../../../store/slices/deliveryFormSlice";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface DeliveryProps {}
 
 const Delivery: FC<DeliveryProps> = ({}) => {
   const initValues = useAppSelector((state) => state.deliveryFormSlice);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { cartTotal, totalItems, items, emptyCart }: any = useCart();
 
   const createOrder = (values: IDeliveryFormValues, actions: any) => {
@@ -28,7 +28,7 @@ const Delivery: FC<DeliveryProps> = ({}) => {
     actions.resetForm({
       values: { name: "", phone: "", address: "", date: null, time: null },
     });
-    navigate('/history')
+    navigate("/history");
   };
 
   return (

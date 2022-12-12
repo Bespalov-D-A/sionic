@@ -1,20 +1,19 @@
-import {FC} from "react"
-import Address from "./Address/Address"
-import Count from "./Count/Count"
-import OrderNumber from "./OrderNumber/OrderNumber"
-import Price from "./Price/Price"
-import Status from "./Status/Status"
-import s from './OrderItem.module.css'
-import {IReadyOrder} from "../../../types/orderTypes"
+import { FC } from "react";
+import Address from "./Address/Address";
+import Count from "./Count/Count";
+import OrderNumber from "./OrderNumber/OrderNumber";
+import Price from "./Price/Price";
+import Status from "./Status/Status";
+import s from "./OrderItem.module.css";
+import { IReadyOrder } from "../../../types/orderTypes";
 
-interface OrderItemI extends IReadyOrder {
-}
+interface OrderItemI extends IReadyOrder {}
 
 const OrderItem: FC<OrderItemI> = (props) => {
-  const {productCount, date, cartTotal, orderId, paid} = props
-  const {cover } = props.products[0]
-  const {address} = props.delivery
-  console.log(props.products)
+  const { productCount, date, cartTotal, orderId, paid } = props;
+  const { cover } = props.products[0];
+  const { address } = props.delivery;
+
   return (
     <div className={s.order}>
       <div className={s.main}>
@@ -28,15 +27,14 @@ const OrderItem: FC<OrderItemI> = (props) => {
         </div>
       </div>
       <div className={s.info}>
-        <Status  paid={paid}/>
+        <Status paid={paid} />
         <OrderNumber orderId={orderId} />
         <Count quantity={productCount} />
-        <Price price={cartTotal}/>
-        <Address address={address}/>
+        <Price price={cartTotal} />
+        <Address address={address} />
       </div>
     </div>
   );
+};
 
-}
-
-export default OrderItem
+export default OrderItem;

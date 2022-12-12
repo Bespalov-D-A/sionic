@@ -10,7 +10,7 @@ interface LocationProps {
 }
 
 const Location: FC<LocationProps> = (props) => {
-  const [field, meta, helper] = useField(props);
+  const [field, meta] = useField(props);
   const dispatch = useAppDispatch();
   const setAddress = (value: string) => {
     dispatch(updateAddress(value));

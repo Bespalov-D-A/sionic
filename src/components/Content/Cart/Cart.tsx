@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import s from "./Cart.module.css";
 import Bar from "./Bar/Bar";
 import Top from "./Top/Top";
