@@ -1,4 +1,5 @@
 import { FC } from "react";
+import CartBtn from "../Header/CartBtn/CartBtn";
 import s from "./HeaderMobile.module.css";
 import MobileMenuBtn from "./MobileMenuBtn/MobileMenuBtn";
 
@@ -10,6 +11,7 @@ const HeaderMobile: FC<HeaderMobileI> = ({mobileBtn}) => {
 
   return (
     <div className={s["header-mobile"]}>
+      <CartBtn />
       <MobileMenuBtn mobileBtn={mobileBtn}/>
     </div>
   );

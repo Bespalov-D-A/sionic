@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import {NavLink} from "react-router-dom";
 import {useCart} from "react-use-cart";
 import s from "./CartBtn.module.css";
 
@@ -8,11 +9,11 @@ const CartBtn: FC<CartBtnProps> = ({}) => {
   const  { totalUniqueItems }  =  useCart() ;
 
   return (
-    <div className={s["cart-btn"]}>
+    <NavLink to='/cart' className={s["cart-btn"]}>
       <div className={s.count}>
         <p className={s['count-item']}>{totalUniqueItems}+</p>
       </div>
-    </div>
+    </NavLink>
   );
 };
 

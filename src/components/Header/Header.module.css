@@ -38,7 +38,7 @@
 
 @media screen and (max-width: 600px) {
 	.header {
-		position: absolute;
+		position: fixed;
 		height: 100vh;
 		top: 0;
 		bottom: 0;

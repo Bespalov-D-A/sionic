@@ -6,9 +6,7 @@ interface ContentProps {}
 
 const Content: FC<ContentProps> = ({}) => {
   return (
-    <BrowserRouter>
       <RouterComp />
-    </BrowserRouter>
   );
 };
 
