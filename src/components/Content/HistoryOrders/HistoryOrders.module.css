@@ -16,3 +16,15 @@
 	color: var(--color-dark);
 
 }
+
+@media screen and (min-width: 1024px) {
+	.history {
+			padding-top: 120px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.history {
+	padding: 0 10px 30px 20px;
+	}
+}

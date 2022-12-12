@@ -4,6 +4,7 @@
 	position: relative;
 	max-width: 455px;
 	margin-right: 20px;
+	margin-bottom: 16px;
 	padding: 20px 8px 20px 20px;
 	border: solid 1px var(--color-v-light-blue);
 	border-radius: 32px;
@@ -49,4 +50,11 @@
 	display: flex;
 	flex-flow: row wrap;
 	clear: both;
+}
+
+@media screen and (max-width: 1366px) {
+	.order {
+		width: 100%;
+		max-width: 100%;
+	}
 }
