@@ -12,6 +12,7 @@ import { ADD_PRODUCTS_PACK } from "../../../../store/models/Product/Product";
 import { params } from "../../../../types/apiTypes";
 import { IProduct } from "../../../../types/productTypes";
 import List from "../../../common/List";
+import Preloader from "../../../common/Preloader/Preloader";
 import ProductCard from "../../../common/ProductCard/ProductCard";
 import ShowMoreBtn from "../../../common/ShowMoreBtn/ShowMoreBtn";
 import s from "./Main.module.css";
@@ -88,6 +89,7 @@ const Main: FC<MainProps> = ({}) => {
       )}
     </div>
 
+    {isLoad && <div className={s['preloader-block']}> <Preloader /></div>}
       {(error && !products) || <ShowMoreBtn showMoreFunc={showMoreFunc} />}
     </>
   );

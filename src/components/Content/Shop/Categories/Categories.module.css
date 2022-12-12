@@ -1,4 +1,5 @@
 .tags {
+	position: relative;
 	display: flex;
 	flex-flow: row wrap;
 	margin-bottom: 20px;

@@ -18,6 +18,11 @@ body {
 	font-weight: 400;
 }
 
+body input[type=text]:not(.browser-default) {
+	border-bottom: none;
+	height: auto;
+}
+
 .blue-btn {
 	border-radius: 51px;
 	border: none;

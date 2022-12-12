@@ -9,6 +9,7 @@ import {setSelectedCategory} from "../../../../store/slices/commonSlice";
 import { ICategory } from "../../../../types/productTypes";
 import CategoryItem from "../../../common/CategoryItem/CategoryItem";
 import List from "../../../common/List";
+import Preloader from "../../../common/Preloader/Preloader";
 import s from "./Categories.module.css";
 
 interface CategoriesI {}
@@ -32,7 +33,7 @@ const Categories: FC<CategoriesI> = ({}) => {
 
   return (
     <div className={s.tags}>
-      {isLoad && "LOAAAADIIING!"}
+      {isLoad && <Preloader />}
       <List
         //@ts-ignore
         items={categories}

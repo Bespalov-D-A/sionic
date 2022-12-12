@@ -18,6 +18,7 @@ import Properties from "./Properties/Properties";
 import { useCart } from "react-use-cart";
 import { IProductInCart } from "../../../types/orderTypes";
 import {threeDots} from "../../../utilites/formatStrings";
+import Preloader from "../Preloader/Preloader";
 
 interface ProductCardProps {
   productCard: IProduct;
@@ -70,7 +71,7 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
     <div className={s["product-card"]}>
       <div className={s.header}>
         {cover.length == 0 ? (
-          "Loading..."
+          <Preloader />
         ) : ( <img src={cover} alt="" className={s.cover} />)}
       </div>
       <div className={s["title-block"]}>

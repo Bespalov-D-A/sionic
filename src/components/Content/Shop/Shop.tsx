@@ -10,6 +10,7 @@ import { ADD_PRODUCT_VARIATION_PROPERTY } from "../../../store/models/VariationP
 import { ADD_PRODUCT_VARIATION_PROP_LIST_VALUES } from "../../../store/models/VariationPropertyListValues/VariationPropertyListValues";
 import {useAppDispatch} from "../../../hooks/useAppDispatch";
 import {useAppSelector} from "../../../hooks/useAppSelector";
+import Preloader from "../../common/Preloader/Preloader";
 
 interface ShopProps {}
 
@@ -41,7 +42,7 @@ const Shop: FC<ShopProps> = ({}) => {
     <div className={s.shop}>
       <Top />
       <Categories />
-      {isLoad ? 'LOADING' : !selectedCat || <Main />}
+      {isLoad ? <Preloader /> : !selectedCat || <Main />}
     </div>
   );
 };

@@ -17,4 +17,7 @@
 	background: transparent;
 }
 
-
+.preloader-block {
+	position: relative;
+	height: 40px;
+}
