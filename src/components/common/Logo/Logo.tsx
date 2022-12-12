@@ -1,12 +1,22 @@
-import React, {FC} from 'react'
-import s from './Logo.module.css'
+import { FC } from "react";
+import {Navigate, redirect, useNavigate} from "react-router-dom";
+import {useAppDispatch} from "../../../hooks/useAppDispatch";
+import {closeMobileMenu} from "../../../store/slices/commonSlice";
+import s from "./Logo.module.css";
 
-interface LogoProps {
-	
-}
+interface LogoProps {}
 
 const Logo: FC<LogoProps> = ({}) => {
-return <h1 className={s.logo}>React</h1>
-}
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+  const clickLogo = () => {
+    navigate('/shop')
+    dispatch(closeMobileMenu())
+  }
 
-export default Logo
+  return (
+    <h1 onClick={()=>clickLogo()} className={s.logo}>React</h1>
+  );
+};
+
+export default Logo;

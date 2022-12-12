@@ -2,7 +2,9 @@
 
 .bar {
 	display: flex;
+	align-items: flex-start;
 	position: relative;
+	height: 100px;
 	padding: 27px 20px 23px 57px;
 	overflow: hidden;
 	border-radius: 20px;
@@ -16,9 +18,10 @@
 	height: 100px;
 	top: 0;
 	right: 20px;
+	z-index: -10;
 	background-image: url('./../../../../img/cart.svg');
 	background-repeat: no-repeat;
-	backround-position: center center;
+	background-position: center center;
 }
 
 .product-name {
@@ -31,4 +34,47 @@
 
 .btn {
 	width: 214px;
+	height: 51px;
+}
+
+.wrap {
+	display: flex;
+	justify-content: space-between;
+}
+
+@media screen and (max-width: 1366px) {
+	.product-name {
+		margin-right: 20px;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.bar {
+	align-items: center;
+	justify-content: space-between;
+		padding: 27px 20px 23px 20px;
+	}
+	
+}
+
+@media screen and (max-width: 768px) {
+	.bar {
+	}
+	.wrap {
+		padding-top: 16px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.bar {
+		flex-flow: column wrap;
+		padding-left: 24px;
+	}
+	.wrap {
+		flex-flow: column wrap;
+		align-items: flex-start;
+	}
+	.wrap > :first-child {
+		margin-bottom: 24px;
+	}
 }

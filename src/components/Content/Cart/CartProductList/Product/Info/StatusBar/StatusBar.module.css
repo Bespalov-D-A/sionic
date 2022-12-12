@@ -1,7 +1,7 @@
 @import "./../../../../../../../css/index.css";
 
 .status-bar {
-	display: inline-block;
+	display: flex;
 	position: relative;
 	padding-top: 10px;
 }
@@ -56,4 +56,14 @@
 
 .bought-count {
 	font-weight: 600;
+}
+
+@media screen and (max-width: 1366px) {
+	.status-bar {
+		flex-flow: column wrap;
+	}
+	.bought {
+		padding-left: 0;
+		padding-top: 6px;
+	}
 }

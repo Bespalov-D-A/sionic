@@ -5,3 +5,9 @@
 	border-radius: 20px;
 	border: solid 1px var(--color-v-light-blue);
 }
+
+@media screen and (max-width: 800px) {
+	.cart {
+	margin: 30px 20px;
+	}
+}

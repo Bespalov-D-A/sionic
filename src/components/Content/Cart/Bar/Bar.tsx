@@ -8,9 +8,12 @@ const Bar: FC<BarProps> = ({}) => {
   return (
     <div className={s.bar}>
       <h3 className={s["product-name"]}>Xiaomi</h3>
-      <Price />
+      <div className={s.wrap}>
+ <Price />
       <input className={s.btn + ' blue-btn'} type="button" value="Оформить" />
-    </div>
+
+      </div>
+         </div>
   );
 };
 

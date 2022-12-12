@@ -19,3 +19,9 @@
 	font-feature-settings: "pnum" on, "lnum" on;
 	color: var(--color-dark);
 }
+
+@media screen and (max-width: 800px) {
+	.price {
+		margin-right: 20px;
+	}
+}
