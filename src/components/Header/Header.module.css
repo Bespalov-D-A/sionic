@@ -12,6 +12,18 @@
 	background: #fff;
 }
 
+.history {
+	display: flex;
+	flex-flow: column wrap;
+	padding: 20px 0 60px 26px;
+}
+
+.history > * {
+	display: block;
+	margin-bottom: 12px;
+	color: #fefefe;
+}
+
 .header__wrap {
 	display: flex;
 	flex-flow: row wrap;
