@@ -31,4 +31,8 @@ color: var(--color-dark-pink);
 	cursor: pointer;
 }
 
-
+@media screen and (min-width: 1024px) {
+	.top {
+		padding-top: 120px;
+	}
+}
