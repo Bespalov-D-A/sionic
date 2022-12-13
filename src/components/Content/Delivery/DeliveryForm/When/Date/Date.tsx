@@ -9,6 +9,7 @@ import { useAppSelector } from "../../../../../../hooks/useAppSelector";
 import { registerLocale } from "react-datepicker";
 import s from "./Date.module.css";
 import ru from "date-fns/locale/ru";
+import { format, addDays} from "date-fns";
 import CustomInputDate from "./CustomInputDate/CustomInputDate";
 import { useField, useFormikContext } from "formik";
 import InputErrMsg from "../../../../../common/InputErrMsg/InputErrMsg";
@@ -50,6 +51,7 @@ const DateField: FC<DateFieldI> = (props) => {
         }
         locale="ru"
         minDate={new Date()}
+        maxDate={addDays(new Date(), 30)}
         placeholderText="Выберите дату"
         dateFormat="dd.MM.yyyy"
         selected={selectedDate ? new Date(selectedDate) : undefined}

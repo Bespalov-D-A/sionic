@@ -1,7 +1,7 @@
 import DatePicker from "react-datepicker";
 import { useAppDispatch } from "../../../../../../hooks/useAppDispatch";
 import { useAppSelector } from "../../../../../../hooks/useAppSelector";
-import { setMinutes, setHours } from "date-fns";
+import { addDays,  setMinutes, setHours } from "date-fns";
 import { registerLocale } from "react-datepicker";
 import { updateTime } from "../../../../../../store/slices/deliveryFormSlice";
 import s from "./Time.module.css";
@@ -53,7 +53,7 @@ const TimeField: FC<TimeFieldI> = (props) => {
             ? setHours(setMinutes(new Date(), 0), maxTime - deliveryTime)
             : setHours(
                 setMinutes(new Date(), 0),
-                date.getHours() + deliveryTime
+                10
               )
         }
         maxTime={setHours(setMinutes(new Date(), 0), 19)}

@@ -1,6 +1,6 @@
 import { compareAsc, setMinutes, setHours } from "date-fns";
 
-//Проверка больше текущее время чем заданное или нет
+//Проверка больше текущее время чем заданное или нет(текущий час)
 export const minTimeFunc = (maxTime: number) => {
   const date = new Date();
   const newDate = new Date(
@@ -16,12 +16,13 @@ export const minTimeFunc = (maxTime: number) => {
 //Проверка позднее ли выбранная дата, чем текущаяя
 export const compareDate = (selectedDate: string | null, maxTime: number) => {
   if (!selectedDate) return null;
-  const date = new Date();
+  const thisDate = new Date()
+  const date = new Date(thisDate.getFullYear(), thisDate.getMonth(), thisDate.getDate());
   const newSelectedDate = new Date(selectedDate);
   //Если выбранная дата позже чем текущая
-  const equ = compareAsc(newSelectedDate.getDate(), date.getDate());
-  if (equ) return false;
-  else return minTimeFunc(maxTime);
+  const equ = compareAsc(newSelectedDate, date);
+  if (equ === 1) return false;
+  else return true
 };
 
 //Исключаем час, следующий за последним часом работы магазина

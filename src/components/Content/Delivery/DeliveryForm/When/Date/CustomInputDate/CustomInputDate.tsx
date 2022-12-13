@@ -20,7 +20,7 @@ const CustomInputDate: FC<CustomInputDateI> = forwardRef(
     const getValue = (name: DateAndTimeNames) => {
       return format(
         new Date(field.value),
-        name === "time" ? "hh:mm" : "dd.MM.yyyy"
+        name === "time" ? "HH:mm" : "dd.MM.yyyy"
       );
     };
 
