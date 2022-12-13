@@ -4,6 +4,7 @@ import Preloader from "../../common/Preloader/Preloader";
 import Categories from "./Categories/Categories";
 import Main from "./Main/Main";
 import Top from "./Top/Top";
+import {DATA_LOAD_ERROR} from "../../../constants/messages";
 
 interface ShopPresentI {
   isLoad: boolean,
@@ -19,7 +20,7 @@ const ShopPresent: FC<ShopPresentI> = ({error, isLoad, selectedCat}) => {
       <Categories />
       {isLoad ? <Preloader /> : !selectedCat || <Main />}
     </div>
-    : <>Ошибка загрузки данных</>
+    : <>{DATA_LOAD_ERROR}</>
   );
 
 }

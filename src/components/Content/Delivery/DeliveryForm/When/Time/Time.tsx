@@ -25,6 +25,8 @@ const TimeField: FC<TimeFieldI> = (props) => {
   const selectedDate = useAppSelector((state) => state.deliveryFormSlice.date);
   const { setFieldValue } = useFormikContext();
   const maxTime = 19;
+  const deliveryTime = 2;
+  const date = new Date();
 
   const setTime = (date: Date) => {
     dispatch(updateTime(date.toString()));
@@ -48,8 +50,11 @@ const TimeField: FC<TimeFieldI> = (props) => {
         locale="ru"
         minTime={
           compareDate(selectedDate, maxTime)
-            ? setHours(setMinutes(new Date(), 0), maxTime)
-            : setHours(setMinutes(new Date(), 0), 10)
+            ? setHours(setMinutes(new Date(), 0), maxTime - deliveryTime)
+            : setHours(
+                setMinutes(new Date(), 0),
+                date.getHours() + deliveryTime
+              )
         }
         maxTime={setHours(setMinutes(new Date(), 0), 19)}
         excludeTimes={timeItems()}
@@ -64,7 +69,7 @@ const TimeField: FC<TimeFieldI> = (props) => {
         withPortal
       />
       <InputErrMsg
-        style={{ top: "18px", left: !selectedDate ? '-4px' :"10px" }}
+        style={{ top: "18px", left: !selectedDate ? "-4px" : "10px" }}
         msg={!selectedDate ? "Сначала выберите дату" : meta.error}
         touched={meta.touched}
       />

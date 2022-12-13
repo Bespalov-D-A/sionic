@@ -13,6 +13,7 @@ import { ADD_PRODUCT_VARIATION_PACK } from "../../../store/models/ProductVariati
 import { variationService } from "../../../API/variationService";
 import {useCart} from "react-use-cart";
 import {IProductInCart} from "../../../types/orderTypes";
+import {ERROR_PRODUCT_ITEM_DATA_LOAD, PRODUCT_IS_AREADY_IN_CART} from "../../../constants/messages";
 
 interface ProductCardProps {
   productCard: IProduct;
@@ -56,7 +57,7 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
       cover,
     };
     if (newProduct) {
-      alert("Уже в корзине");
+      alert(PRODUCT_IS_AREADY_IN_CART);
     } else addItem(productInCart);
   };
 
@@ -70,7 +71,7 @@ const ProdcutCard: FC<ProductCardProps> = ({ productCard }) => {
       addCartFunc={addCartFunc}
       productCard={productCard}
     />
-    : <>Ошибка загрузки данных товарa</>
+    : <>{ERROR_PRODUCT_ITEM_DATA_LOAD}</>
   );
 };
 

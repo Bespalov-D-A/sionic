@@ -1,4 +1,5 @@
 import {FC, useMemo} from "react"
+import {ERROR, UNKNOWN_ERROR} from "../../../../constants/messages"
 import {useGetPropertyValue} from "../../../../hooks/useGetPropertyValue"
 import {useListValue} from "../../../../hooks/useListValue"
 import {IProductVariation} from "../../../../types/productTypes"
@@ -24,9 +25,9 @@ const PropertyItem: FC<PropertyItemI> = ({id, title, selectedVariation}) => {
       case 3: return value.value_int
       case 4: return value.value_int
       case 5: return value.value_float
-      case 6: return listValue ? listValue.title : 'error' 
-      case 7: return listValue ? listValue.title : 'error' 
-      default: return 'Unknown error'
+      case 6: return listValue ? listValue.title : ERROR
+      case 7: return listValue ? listValue.title : ERROR
+      default: return UNKNOWN_ERROR
     }
   }, [listValue, value])
 

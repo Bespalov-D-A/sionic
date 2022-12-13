@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import  { FC } from "react";
 import s from "./Top.module.css";
 
 interface TopProps {}

@@ -1,5 +1,6 @@
 import {FC, useEffect} from "react"
 import {variationService} from "../../../../API/variationService"
+import {ERROR_PROPERTY_VALUE_LOAD} from "../../../../constants/messages"
 import {useAppDispatch} from "../../../../hooks/useAppDispatch"
 import {useAppSelector} from "../../../../hooks/useAppSelector"
 import {useLoader} from "../../../../hooks/useLoader"
@@ -34,12 +35,14 @@ const Properties: FC<PropertiesI> = ({selectedVariation}) => {
 
 
   return <div className={s.properties}>
+    {!error ?
   <List
     //@ts-ignore
     items={properties}
     renderItem={(property: IProductVariationProperties )=> 
       <PropertyItem selectedVariation={selectedVariation} key={property.id} id={property.id} title={property.name}/>
   } />
+  : <>{ERROR_PROPERTY_VALUE_LOAD}</>}
   </div>
 }
 

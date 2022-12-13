@@ -27,14 +27,12 @@ const Count: FC<CountProps> = ({ productId, quantity }) => {
 
   return (
     <div className={s["count-block"]}>
-      <input
-        type="button"
+      <div
         onClick={() => editQuantity("minus")}
         className={s.minus + " " + s.btn}
       />
       <span className={s.count}>{count}</span>
-      <input
-        type="button"
+      <div
         onClick={() => editQuantity("plus")}
         className={s.plus + " " + s.btn}
       />

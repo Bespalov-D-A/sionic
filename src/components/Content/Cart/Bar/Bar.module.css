@@ -37,6 +37,10 @@
 	height: 51px;
 }
 
+.btn:hover {
+	cursor:pointer;
+}
+
 .wrap {
 	display: flex;
 	justify-content: space-between;

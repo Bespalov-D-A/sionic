@@ -8,3 +8,17 @@
 	background-repeat: no-repeat;
 	background-position: center center;
 }
+
+.del:after {
+	content: '';
+	display: block;
+	position: absolute;
+	top:-10px;
+	left:-10px;
+	width: 40px;
+	height: 40px;
+}
+
+.del:hover {
+	cursor:pointer;
+}

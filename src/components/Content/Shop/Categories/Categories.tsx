@@ -1,5 +1,6 @@
 import { FC, useEffect } from "react";
 import { categoryService } from "../../../../API/categoryService";
+import {CATEGORY_LOAD_ERROR} from "../../../../constants/messages";
 import { useAppDispatch } from "../../../../hooks/useAppDispatch";
 import { useAppSelector } from "../../../../hooks/useAppSelector";
 import { useLoader } from "../../../../hooks/useLoader";
@@ -43,7 +44,7 @@ const Categories: FC<CategoriesI> = ({}) => {
       />
     </div>
   ) : (
-    <>Ошибка загрузки категорий</>
+    <>{CATEGORY_LOAD_ERROR}</>
   );
 };
 

@@ -5,7 +5,7 @@ import List from "../../../common/List";
 import Preloader from "../../../common/Preloader/Preloader";
 import ProductCard from "../../../common/ProductCard/ProductCard";
 import ShowMoreBtn from "../../../common/ShowMoreBtn/ShowMoreBtn";
-
+import {CATEGORY_WAS_NOT_LOADED, DATA_LOAD_ERROR} from "../../../../constants/messages";
 interface MainPresentI {
   error: any;
   selectedCategory: number | null;
@@ -36,10 +36,10 @@ const MainPresent: FC<MainPresentI> = ({
               )}
             />
           ) : (
-            "Категории не были загружены"
+            {CATEGORY_WAS_NOT_LOADED}
           )
         ) : (
-          "Ошибка загрузки данных"
+          {DATA_LOAD_ERROR}
         )}
         {(error && !products) || (
           <div className={s.infinite} ref={lastElementRef}></div>
