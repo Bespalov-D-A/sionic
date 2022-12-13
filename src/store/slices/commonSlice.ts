@@ -9,7 +9,7 @@ export interface commonState {
 
 const initialState: commonState = {
   selectedCategory: null,
-  limit: 12,
+  limit: 15,
   menuIsOpen: false
 }
 

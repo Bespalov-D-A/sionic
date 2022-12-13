@@ -7,3 +7,7 @@ export const addPackDataCase = (payload: any[], Model: any) => {
         }
 
 }
+
+export const removeAllProductsCase = (Model: any) => {
+        Model.delete()
+}

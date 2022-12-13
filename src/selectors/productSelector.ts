@@ -6,9 +6,11 @@ export const getProductsByCategoryId = createSelector(
   //@ts-ignore
   state => state.commonSlice.selectedCategory,
   //@ts-ignore
-  (session, selectedCategory) => {
+  state => state.ormReducer.Product,
+  //@ts-ignore
+  (session, selectedCategory, products) => {
       if(!selectedCategory) return session.Product.all().toRefArray()
-    return session.Product.filter({category_id: selectedCategory}).toRefArray();
+        else return session.Product.filter({category_id: selectedCategory}).toRefArray();
   }
 )
 

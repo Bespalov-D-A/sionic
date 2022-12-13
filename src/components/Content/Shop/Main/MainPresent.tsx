@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, SetStateAction } from "react";
 import { IProduct } from "../../../../types/productTypes";
 import s from "./Main.module.css";
 import List from "../../../common/List";
@@ -6,6 +6,7 @@ import Preloader from "../../../common/Preloader/Preloader";
 import ProductCard from "../../../common/ProductCard/ProductCard";
 import ShowMoreBtn from "../../../common/ShowMoreBtn/ShowMoreBtn";
 import {CATEGORY_WAS_NOT_LOADED, DATA_LOAD_ERROR} from "../../../../constants/messages";
+import Pagination from "../../../common/Pagination/Pagination";
 interface MainPresentI {
   error: any;
   selectedCategory: number | null;
@@ -13,6 +14,9 @@ interface MainPresentI {
   showMoreFunc: () => void;
   lastElementRef: React.MutableRefObject<HTMLDivElement>;
   isLoad: boolean;
+  page: number,
+    setPage: (num:number)=>void
+    pagesArray: number[] | null
 }
 
 const MainPresent: FC<MainPresentI> = ({
@@ -22,6 +26,9 @@ const MainPresent: FC<MainPresentI> = ({
   products,
   showMoreFunc,
   lastElementRef,
+  page,
+  setPage,
+  pagesArray
 }) => {
   return (
     <>
@@ -52,6 +59,7 @@ const MainPresent: FC<MainPresentI> = ({
           <Preloader />
         </div>
       )}
+      <Pagination page={page} setPage={setPage} pagesArray={pagesArray} />
       {(error && !products) || <ShowMoreBtn showMoreFunc={showMoreFunc} />}
     </>
   );
