@@ -22,6 +22,7 @@ const Delivery: FC<DeliveryProps> = ({}) => {
   const { cartTotal, totalItems, items, emptyCart }: any = useCart();
 
   const createOrder = (values: IDeliveryFormValues, actions: any) => {
+    if(!items.length) return
     dispatch(updateOrders(orderUtil(items, values, totalItems, cartTotal)));
     dispatch(clearForm());
     emptyCart();

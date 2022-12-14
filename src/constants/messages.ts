@@ -6,3 +6,5 @@ export const PRODUCT_IS_AREADY_IN_CART = "Уже в корзине"
 export const ERROR = 'Ошибка'
 export const UNKNOWN_ERROR = 'Неизвестна ошибка'
 export const ERROR_PROPERTY_VALUE_LOAD = 'Ошика загрузки значений свойств'
+export const DELIVERY_FORM_NOT_VALID = 'Форма доставки заполнена не верно'
+export const CART_IS_EMPTY = 'Корзина пуста'

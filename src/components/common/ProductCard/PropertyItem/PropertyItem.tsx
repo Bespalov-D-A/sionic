@@ -18,7 +18,7 @@ const PropertyItem: FC<PropertyItemI> = ({id, title, selectedVariation}) => {
   const listValue = useListValue(listId)
 
   const getVal = useMemo(() => {
-    if(!value) return 'load'
+    if(!value) return null
     switch(id) {
       case 1: return value.value_string
       case 2: return value.value_int
@@ -32,7 +32,7 @@ const PropertyItem: FC<PropertyItemI> = ({id, title, selectedVariation}) => {
   }, [listValue, value])
 
   return <div className={s.property}>
-    <p>{title}</p> <p>{getVal}</p>
+    <p className={s.title}>{title}</p> <p className={s.value + ' ' + (getVal || s.load)}>{!getVal ? '' : getVal}</p>
   </div>
 }
 
