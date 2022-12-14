@@ -6,12 +6,13 @@ import { useGetProductsInCat } from "../../../../hooks/useGetProducts";
 import { useLoader } from "../../../../hooks/useLoader";
 import { useObserver } from "../../../../hooks/useObserverInfinteScroll";
 import { usePagination } from "../../../../hooks/usePagination";
+import { getProductsLengthByCategoryId } from "../../../../selectors/productSelector";
 import {
-  getProductsLengthByCategoryId,
-} from "../../../../selectors/productSelector";
-import { ADD_PRODUCTS_PACK, REMOVE_ALL_PRODUCTS } from "../../../../store/models/Product/Product";
+  ADD_PRODUCTS_PACK,
+  REMOVE_ALL_PRODUCTS,
+} from "../../../../store/models/Product/Product";
 import { params } from "../../../../types/apiTypes";
-import {scrollTop} from "../../../../utilites/commonUtils";
+import { getNumberInString, rangeFunc, scrollTop } from "../../../../utilites/commonUtils";
 import MainPresent from "./MainPresent";
 
 interface MainProps {}
@@ -41,30 +42,20 @@ const Main: FC<MainProps> = ({}) => {
     const response = await productService.getProducts(params);
     const totalCountProduct: string | undefined =
       response.headers["content-range"];
-    totalCountProduct &&
-      setTotalCount(Number(totalCountProduct.match(/(?<=\/)[\d]*/)));
+    totalCountProduct && setTotalCount(getNumberInString(totalCountProduct));
     dispatch({ type: ADD_PRODUCTS_PACK, payload: response.data });
   });
 
   //получаем массив с номера страниц
   const paginationNums = usePagination(totalCount, limit);
 
-  const setPageFunc = (num:number) => {
-    scrollTop()
-    setTimeout(()=> {
-    dispatch({type: REMOVE_ALL_PRODUCTS})
-    setPage(num)
-    }, 1000)
-  }
-
-  const rangeFunc = (page: number, limit: number, productsCount: number) => {
-    const res = `[${((page - 1) * limit) + productsCount}, ${
-      ((page - 1) * limit) + productsCount + 3
-    }]`;
-
-    return res;
+  const setPageFunc = (num: number) => {
+    scrollTop();
+    setTimeout(() => {
+      dispatch({ type: REMOVE_ALL_PRODUCTS });
+      setPage(num);
+    }, 1000);
   };
-
 
   useObserver({
     callback: () =>
@@ -79,18 +70,17 @@ const Main: FC<MainProps> = ({}) => {
     products,
     limit,
     page,
-    totalCount
+    totalCount,
   });
 
-
   useEffect(() => {
-    showMoreFunc()
-      }, [selectedCategory, page]);
+    showMoreFunc();
+  }, [selectedCategory, page]);
 
   const showMoreFunc = () => {
     const params = {
       filter: `{"category_id":${selectedCategory}}`,
-      range: rangeFunc(page, limit, products.length)
+      range: rangeFunc(page, limit, products.length),
     };
     isFetch(params);
   };

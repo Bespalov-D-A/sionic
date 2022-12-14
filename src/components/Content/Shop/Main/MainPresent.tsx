@@ -1,11 +1,14 @@
-import { FC, SetStateAction } from "react";
+import { FC } from "react";
 import { IProduct } from "../../../../types/productTypes";
 import s from "./Main.module.css";
 import List from "../../../common/List";
 import Preloader from "../../../common/Preloader/Preloader";
 import ProductCard from "../../../common/ProductCard/ProductCard";
 import ShowMoreBtn from "../../../common/ShowMoreBtn/ShowMoreBtn";
-import {CATEGORY_WAS_NOT_LOADED, DATA_LOAD_ERROR} from "../../../../constants/messages";
+import {
+  CATEGORY_WAS_NOT_LOADED,
+  DATA_LOAD_ERROR,
+} from "../../../../constants/messages";
 import Pagination from "../../../common/Pagination/Pagination";
 interface MainPresentI {
   error: any;
@@ -14,9 +17,9 @@ interface MainPresentI {
   showMoreFunc: () => void;
   lastElementRef: React.MutableRefObject<HTMLDivElement>;
   isLoad: boolean;
-  page: number,
-    setPage: (num:number)=>void
-    pagesArray: number[] | null
+  page: number;
+  setPage: (num: number) => void;
+  pagesArray: number[] | null;
 }
 
 const MainPresent: FC<MainPresentI> = ({
@@ -28,7 +31,7 @@ const MainPresent: FC<MainPresentI> = ({
   lastElementRef,
   page,
   setPage,
-  pagesArray
+  pagesArray,
 }) => {
   return (
     <>
@@ -43,10 +46,10 @@ const MainPresent: FC<MainPresentI> = ({
               )}
             />
           ) : (
-            {CATEGORY_WAS_NOT_LOADED}
+            { CATEGORY_WAS_NOT_LOADED }
           )
         ) : (
-          {DATA_LOAD_ERROR}
+          { DATA_LOAD_ERROR }
         )}
         {(error && !products) || (
           <div className={s.infinite} ref={lastElementRef}></div>
