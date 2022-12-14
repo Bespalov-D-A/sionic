@@ -18,3 +18,7 @@
 	background: mediumorchid;
 	cursor:pointer;
 }
+
+.category.active {
+	background: mediumorchid;
+}

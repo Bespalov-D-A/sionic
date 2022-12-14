@@ -22,6 +22,11 @@ body input[type=text]:not(.browser-default) {
 	border-bottom: none;
 	height: auto;
 	margin: 0;
+	width: auto;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+	box-shadow: 0 1px 0 -5px #26a69a;
 }
 
 .blue-btn {

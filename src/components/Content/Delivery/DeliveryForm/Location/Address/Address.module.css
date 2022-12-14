@@ -22,10 +22,10 @@
 	background-position: center center;
 }
 
-.input-field {
+body div.address > input.input-field {
 	position: relative;
 	left: 40px;
-	width: 100%;
+	width: 232px;
 	border: none;
 	outline: none;
 	background-color: transparent;
