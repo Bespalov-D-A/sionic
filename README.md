@@ -1,4 +1,4 @@
-Sionic. Test work. Middle frontend developer.  
+### Sionic. Test work. Middle frontend developer ### 
   
 Release 0.1
   
@@ -19,7 +19,7 @@ Release 0.1
 - Сладер выбора вариаций
 - Базовая валидация форм
 
-*Установка*   
+#### Установка #### 
   
 ```git clone git@github.com:Bespalov-D-A/sionic.git```  
 ```npm i```
